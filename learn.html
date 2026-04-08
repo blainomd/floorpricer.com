@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn | FloorPricer — AI-Powered Trading Webinars</title>
+    <meta name="description" content="Free live webinars on trailing stops, ladder buys, the Wheel strategy, and AI-powered trading protection. Learn how FloorPricer keeps your floor moving up.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d9488'/><path d='M20 65 L40 35 L55 50 L80 25' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/><circle cx='80' cy='25' r='6' fill='%2334d399'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green-hero: #0d9488;
+            --green-accent: #14b8a6;
+            --green-light: #99f6e4;
+            --green-bright: #10b981;
+            --green-dark: #065f46;
+            --gold: #f59e0b;
+            --gold-light: #fef3c7;
+            --red-500: #ef4444;
+            --red-light: #fee2e2;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--green-accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-logo span {
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-400);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-accent);
+        }
+
+        .nav-links a.active {
+            color: var(--green-accent);
+        }
+
+        .nav-cta {
+            background: var(--green-hero) !important;
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--green-accent) !important;
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--gray-400);
+        }
+
+        /* ===== HERO ===== */
+        .learn-hero {
+            padding: 140px 24px 80px;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 30%, #0c4a45 70%, #065f46 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .learn-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(13,148,136,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .learn-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.12);
+            border: 1px solid rgba(16,185,129,0.25);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--green-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        .learn-hero h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .learn-hero p {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .learn-hero p.subtitle {
+            color: var(--gray-300);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        /* ===== REGISTRATION SECTION ===== */
+        .reg-section {
+            padding: 80px 24px;
+            background: var(--gray-50);
+        }
+
+        .reg-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .reg-form-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+
+        .reg-form-card h2 {
+            font-size: 1.5rem;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .reg-form-card .desc {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: 32px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--green-hero);
+            box-shadow: 0 0 0 3px rgba(13,148,136,0.15);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--green-hero);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            background: var(--green-accent);
+            transform: translateY(-1px);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-error {
+            color: var(--red-500);
+            font-size: 0.8125rem;
+            margin-top: 8px;
+        }
+
+        .form-success {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .form-success .check-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(13,148,136,0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .form-success h3 {
+            font-size: 1.25rem;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .form-success p {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        /* Embed placeholder */
+        .embed-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+
+        .embed-placeholder {
+            aspect-ratio: 16/9;
+            background: var(--gray-900);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .embed-placeholder-inner {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .embed-placeholder .play-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(13,148,136,0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .embed-placeholder p {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+        }
+
+        .embed-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .embed-footer p {
+            color: var(--gray-500);
+            font-size: 0.8125rem;
+        }
+
+        /* ===== UPCOMING ===== */
+        .upcoming {
+            padding: 80px 24px;
+        }
+
+        .upcoming-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .upcoming-header h2 {
+            font-size: 2rem;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .upcoming-header p {
+            color: var(--gray-500);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .upcoming-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .webinar-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 16px;
+            padding: 32px;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .webinar-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .webinar-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(13,148,136,0.08);
+            color: var(--green-hero);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .webinar-card h3 {
+            font-size: 1.125rem;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .webinar-card .date {
+            font-size: 0.8125rem;
+            color: var(--green-hero);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .webinar-card .desc {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* ===== CTA ===== */
+        .learn-cta {
+            padding: 80px 24px;
+            background: var(--green-hero);
+            text-align: center;
+        }
+
+        .learn-cta h2 {
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .learn-cta p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .learn-cta-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--white);
+            color: var(--green-hero);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .learn-cta-btn:hover {
+            background: var(--gray-50);
+            transform: translateY(-1px);
+        }
+
+        /* ===== FOOTER ===== */
+        .learn-footer {
+            padding: 32px 24px;
+            background: var(--gray-900);
+            text-align: center;
+        }
+
+        .learn-footer p {
+            color: var(--gray-500);
+            font-size: 0.8125rem;
+        }
+
+        .learn-footer a {
+            color: var(--green-accent);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .learn-hero h1 { font-size: 2rem; }
+            .reg-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .upcoming-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect width="24" height="24" rx="6" fill="#0d9488"/>
+                <path d="M5 16 L10 8 L14 12 L19 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="6" r="2" fill="#34d399"/>
+            </svg>
+            FloorPricer
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#strategies">Strategies</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="index.html#cooperative">Cooperative</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="learn.html" class="active">Learn</a></li>
+            <li><a href="index.html#get-started" class="nav-cta">Get Started Free</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="learn-hero">
+    <div class="learn-hero-inner">
+        <div class="badge">Free Live Webinar</div>
+        <h1>Your Floor Only Moves Up</h1>
+        <p class="subtitle">AI-Powered Trading Protection</p>
+        <p>Learn trailing stops, ladder buys, and the Wheel strategy with AI automation. Free live sessions for retail investors.</p>
+    </div>
+</section>
+
+<!-- REGISTRATION + EMBED -->
+<section class="reg-section">
+    <div class="reg-grid">
+        <!-- Registration Form -->
+        <div class="reg-form-card">
+            <h2>Register for the Next Session</h2>
+            <p class="desc">Reserve your spot and get a reminder before we go live.</p>
+
+            <div id="reg-form-container">
+                <form id="reg-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first_name">First Name *</label>
+                            <input id="first_name" type="text" required placeholder="Jane">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input id="last_name" type="text" placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input id="email" type="email" required placeholder="jane@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone (optional)</label>
+                        <input id="phone" type="tel" placeholder="(555) 123-4567">
+                    </div>
+                    <div id="form-error" class="form-error" style="display:none"></div>
+                    <button type="submit" class="form-submit" id="submit-btn">Reserve My Spot</button>
+                </form>
+            </div>
+
+            <div id="reg-success" class="form-success" style="display:none">
+                <div class="check-circle">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <h3>You're registered!</h3>
+                <p>Check your email for confirmation and calendar invite.</p>
+            </div>
+        </div>
+
+        <!-- Embed placeholder -->
+        <div class="embed-card">
+            <div class="embed-placeholder">
+                <div class="embed-placeholder-inner">
+                    <div class="play-circle">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#14b8a6">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                    <p>The webinar player will appear here when the session is live.</p>
+                </div>
+                <!-- BigMarker embed: replace CONFERENCE_ID with actual ID
+                <iframe
+                    src="https://www.bigmarker.com/embed/CONFERENCE_ID"
+                    width="100%"
+                    height="100%"
+                    allow="camera;microphone;fullscreen"
+                    style="border: 0"
+                ></iframe> -->
+            </div>
+            <div class="embed-footer">
+                <p>Can't make it live? Register anyway and we'll send you the recording.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- UPCOMING WEBINARS -->
+<section class="upcoming">
+    <div class="upcoming-header">
+        <h2>Upcoming Sessions</h2>
+        <p>Choose the webinar that fits your schedule. All sessions include live Q&A.</p>
+    </div>
+    <div class="upcoming-grid">
+        <div class="webinar-card">
+            <div class="webinar-badge">Live Session</div>
+            <h3>Trailing Stops Masterclass: Never Ride a Winner Back Down</h3>
+            <div class="date">Every Wednesday at 12:00 PM ET</div>
+            <p class="desc">Learn how AI-powered trailing stops automatically protect your gains while letting winners run. Live demo with real market scenarios.</p>
+        </div>
+        <div class="webinar-card">
+            <div class="webinar-badge">Live Session</div>
+            <h3>Ladder Buys and the Wheel Strategy with AI Automation</h3>
+            <div class="date">1st and 3rd Thursday of every month, 7:00 PM ET</div>
+            <p class="desc">Turn volatility into income. Learn how FloorPricer automates the Wheel strategy and dollar-cost averaging with intelligent ladder buys.</p>
+        </div>
+        <div class="webinar-card">
+            <div class="webinar-badge">Live Session</div>
+            <h3>Cooperative Investing: Wall Street Tools, Main Street Values</h3>
+            <div class="date">Monthly — Last Saturday, 10:00 AM ET</div>
+            <p class="desc">How cooperative ownership gives everyday investors hedge-fund-grade tools at a fraction of the cost. Open source, community-governed.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="learn-cta">
+    <h2>Ready to Protect Your Portfolio?</h2>
+    <p>Register for our next free webinar and learn how AI automation keeps your floor moving up.</p>
+    <a href="#" class="learn-cta-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Register Now</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="learn-footer">
+    <p>&copy; 2026 FloorPricer by <a href="index.html">CommonAlpha</a>. All rights reserved.</p>
+</footer>
+
+<script>
+    // Scroll shadow for nav
+    window.addEventListener('scroll', () => {
+        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // BigMarker registration
+    const BIGMARKER_API_KEY = '0d8024c60b908e5055b8';
+
+    document.getElementById('reg-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const errEl = document.getElementById('form-error');
+        errEl.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Registering...';
+
+        const data = {
+            first_name: document.getElementById('first_name').value,
+            last_name: document.getElementById('last_name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            conference_id: 'FLOORPRICER_NEXT_WEBINAR'
+        };
+
+        try {
+            // Since this is a static site, we call BigMarker directly
+            // Note: In production, proxy through a backend to protect the API key
+            const res = await fetch('https://www.bigmarker.com/api/v1/conferences/register', {
+                method: 'PUT',
+                headers: {
+                    'API-KEY': BIGMARKER_API_KEY,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: data.conference_id,
+                    first_name: data.first_name,
+                    last_name: data.last_name,
+                    email: data.email,
+                    custom_fields: data.phone ? { phone: data.phone } : undefined
+                })
+            });
+
+            if (!res.ok) throw new Error('Registration failed');
+
+            document.getElementById('reg-form-container').style.display = 'none';
+            document.getElementById('reg-success').style.display = 'block';
+        } catch (err) {
+            errEl.textContent = err.message || 'Something went wrong. Please try again.';
+            errEl.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Reserve My Spot';
+        }
+    });
+</script>
+
+</body>
+</html>

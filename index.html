@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloorPricer — Wall Street Tools, Main Street Values</title>
+    <meta name="description" content="An AI trading harness that gives everyday investors the same automated execution, risk management, and pattern recognition that hedge funds use. Open source. Cooperative-owned.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d9488'/><path d='M20 65 L40 35 L55 50 L80 25' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/><circle cx='80' cy='25' r='6' fill='%2334d399'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green-hero: #0d9488;
+            --green-accent: #14b8a6;
+            --green-light: #99f6e4;
+            --green-bright: #10b981;
+            --green-dark: #065f46;
+            --gold: #f59e0b;
+            --gold-light: #fef3c7;
+            --red-500: #ef4444;
+            --red-light: #fee2e2;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--green-accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-logo span {
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-400);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-accent);
+        }
+
+        .nav-cta {
+            background: var(--green-hero) !important;
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--green-accent) !important;
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--gray-400);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 160px 24px 120px;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 30%, #0c4a45 70%, #065f46 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(13,148,136,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.12);
+            border: 1px solid rgba(16,185,129,0.25);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--green-bright);
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--white);
+            max-width: 850px;
+            margin-bottom: 8px;
+        }
+
+        .hero-green {
+            color: var(--green-bright);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: rgba(255,255,255,0.65);
+            max-width: 620px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-bright);
+            color: var(--gray-900);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 4px 24px rgba(16,185,129,0.3);
+        }
+
+        .btn-primary:hover {
+            background: #34d399;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(16,185,129,0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.25s;
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .hero-stat { text-align: center; }
+
+        .hero-stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            color: var(--green-bright);
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 0; }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--green-hero);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 16px;
+            color: var(--gray-900);
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-500);
+            max-width: 640px;
+            line-height: 1.7;
+        }
+
+        /* ===== PROBLEM ===== */
+        .problem {
+            background: var(--gray-900);
+            color: var(--white);
+        }
+
+        .problem .section-label { color: var(--red-500); }
+        .problem .section-title { color: var(--white); }
+        .problem .section-subtitle { color: var(--gray-400); }
+
+        .gap-grid {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: 32px;
+            margin-top: 64px;
+            align-items: start;
+        }
+
+        .gap-side {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px 32px;
+        }
+
+        .gap-side h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+
+        .gap-side.wall-street h3 { color: var(--red-500); }
+        .gap-side.main-street h3 { color: var(--green-bright); }
+
+        .gap-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.95rem;
+            color: var(--gray-300);
+        }
+
+        .gap-item:last-child { border-bottom: none; }
+
+        .gap-item svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .gap-vs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+
+        .gap-vs span {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--gray-500);
+        }
+
+        /* ===== STRATEGIES ===== */
+        .strategies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .strategy-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 36px 28px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strategy-card:hover {
+            border-color: var(--green-hero);
+            box-shadow: 0 8px 32px rgba(13,148,136,0.1);
+            transform: translateY(-4px);
+        }
+
+        .strategy-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .strategy-icon.green { background: rgba(16,185,129,0.1); }
+        .strategy-icon.teal { background: rgba(13,148,136,0.1); }
+        .strategy-icon.gold { background: rgba(245,158,11,0.1); }
+
+        .strategy-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--gray-900);
+        }
+
+        .strategy-card p {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .strategy-tag {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tag-beginner {
+            background: var(--green-light);
+            color: var(--green-dark);
+        }
+
+        .tag-intermediate {
+            background: var(--gold-light);
+            color: #92400e;
+        }
+
+        .tag-advanced {
+            background: rgba(13,148,136,0.1);
+            color: var(--green-hero);
+        }
+
+        /* ===== TERMINAL ===== */
+        .terminal-section {
+            background: var(--gray-50);
+        }
+
+        .terminal {
+            background: var(--gray-900);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 48px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ef4444; }
+        .terminal-dot.yellow { background: #f59e0b; }
+        .terminal-dot.green { background: #10b981; }
+
+        .terminal-title {
+            margin-left: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .terminal-body {
+            padding: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--gray-300);
+            overflow-x: auto;
+        }
+
+        .terminal-body .prompt { color: var(--green-bright); }
+        .terminal-body .cmd { color: var(--white); }
+        .terminal-body .output { color: var(--gray-400); }
+        .terminal-body .success { color: var(--green-bright); }
+        .terminal-body .warn { color: var(--gold); }
+        .terminal-body .dim { color: var(--gray-500); }
+
+        /* ===== COOPERATIVE ===== */
+        .coop-section {
+            background: linear-gradient(135deg, #020617 0%, #0c4a45 100%);
+            color: var(--white);
+        }
+
+        .coop-section .section-label { color: var(--green-light); }
+        .coop-section .section-title { color: var(--white); }
+        .coop-section .section-subtitle { color: var(--gray-400); }
+
+        .coop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .coop-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 36px 28px;
+        }
+
+        .coop-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            color: var(--green-light);
+        }
+
+        .coop-card p {
+            font-size: 0.95rem;
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .price-card {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 40px 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .price-card.featured {
+            border-color: var(--green-hero);
+            box-shadow: 0 8px 32px rgba(13,148,136,0.15);
+            position: relative;
+        }
+
+        .price-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green-hero);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .price-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .price-amount {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 2.5rem;
+            color: var(--green-hero);
+            margin: 16px 0;
+        }
+
+        .price-amount span {
+            font-size: 1rem;
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .price-desc {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .price-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .price-features li svg {
+            flex-shrink: 0;
+            color: var(--green-hero);
+        }
+
+        .price-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.25s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .price-btn.primary {
+            background: var(--green-hero);
+            color: var(--white);
+        }
+
+        .price-btn.primary:hover {
+            background: var(--green-accent);
+            transform: translateY(-2px);
+        }
+
+        .price-btn.outline {
+            background: transparent;
+            color: var(--green-hero);
+            border: 2px solid var(--green-hero);
+        }
+
+        .price-btn.outline:hover {
+            background: rgba(13,148,136,0.05);
+        }
+
+        /* ===== CTA ===== */
+        .final-cta {
+            background: var(--gray-900);
+            text-align: center;
+            padding: 100px 24px;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .final-cta p {
+            font-size: 1.15rem;
+            color: var(--gray-400);
+            max-width: 560px;
+            margin: 0 auto 40px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #020617;
+            padding: 48px 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--green-accent);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero { padding: 120px 24px 80px; }
+            .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .gap-grid { grid-template-columns: 1fr; }
+            .gap-vs { display: none; }
+            .strategies-grid { grid-template-columns: 1fr; }
+            .coop-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect width="24" height="24" rx="6" fill="#0d9488"/>
+                <path d="M5 16 L10 8 L14 12 L19 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="6" r="2" fill="#34d399"/>
+            </svg>
+            FloorPricer
+        </a>
+        <ul class="nav-links">
+            <li><a href="#strategies">Strategies</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#cooperative">Cooperative</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="#get-started" class="nav-cta">Get Started Free</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Open Source Trading Harness
+        </div>
+        <h1>Your floor only<br><span class="hero-green">moves up.</span></h1>
+        <p>AI-powered trailing stops that lock in your gains and cap your losses. The floor rises as your stock climbs. If it drops, you're protected. Your keys, your rules.</p>
+        <div class="hero-ctas">
+            <a href="#get-started" class="btn-primary">
+                Connect Your Brokerage
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            </a>
+            <a href="#how-it-works" class="btn-secondary">
+                See it run
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">$0</div>
+                <div class="hero-stat-label">Paper trading is free</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">&lt;18dB</div>
+                <div class="hero-stat-label">Runs silently in background</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">100%</div>
+                <div class="hero-stat-label">Your keys. Your control.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+    <div class="container">
+        <div class="section-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            The Unfair Advantage
+        </div>
+        <h2 class="section-title">They have robots.<br>You have a phone.</h2>
+        <p class="section-subtitle">Hedge funds, market makers, and insider-trading politicians have automated execution, real-time data feeds, and risk engines. You get Robinhood confetti.</p>
+
+        <div class="gap-grid">
+            <div class="gap-side wall-street">
+                <h3>Wall Street</h3>
+                <div class="gap-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Automated execution in microseconds
+                </div>
+                <div class="gap-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Real-time risk monitoring 24/7
+                </div>
+                <div class="gap-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Dynamic position sizing algorithms
+                </div>
+                <div class="gap-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Congressional portfolio tracking
+                </div>
+            </div>
+
+            <div class="gap-vs"><span>vs</span></div>
+
+            <div class="gap-side main-street">
+                <h3>You, after FloorPricer</h3>
+                <div class="gap-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    Claude executes your strategies automatically
+                </div>
+                <div class="gap-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    Trailing stops protect your gains 24/7
+                </div>
+                <div class="gap-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    Ladder buys average down on dips
+                </div>
+                <div class="gap-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    Cooperative intelligence from the collective
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STRATEGIES -->
+<section id="strategies">
+    <div class="container">
+        <div class="section-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10m6 10V4M6 20v-4"/></svg>
+            Built-in Strategies
+        </div>
+        <h2 class="section-title">Three strategies. One harness.</h2>
+        <p class="section-subtitle">Start with paper trading. Graduate to live. Every strategy runs the same monitor-evaluate-execute loop.</p>
+
+        <div class="strategies-grid">
+            <div class="strategy-card">
+                <div class="strategy-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Trailing Stop</h3>
+                <p>Set a floor that only moves up. As your stock climbs, the floor climbs with it. If it drops below your trailing threshold, the bot sells automatically. Locks in gains, caps losses.</p>
+                <span class="strategy-tag tag-beginner">Beginner</span>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-icon gold">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"><path d="M2 20h20M5 20V8l5 4V20m4 0V4l5 4v12"/></svg>
+                </div>
+                <h3>Ladder Buys</h3>
+                <p>When a stock dips, buy more at each level to average down your cost basis. Set the rungs, set the budget, and the bot executes each buy automatically as thresholds hit.</p>
+                <span class="strategy-tag tag-intermediate">Intermediate</span>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-icon teal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3>The Wheel</h3>
+                <p>Sell cash-secured puts to collect premium. If assigned, sell covered calls on the shares. Collect income regardless of direction. The bot tracks strikes, rolls contracts, manages the cycle.</p>
+                <span class="strategy-tag tag-advanced">Advanced</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS (Terminal Demo) -->
+<section class="terminal-section" id="how-it-works">
+    <div class="container">
+        <div class="section-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            How It Works
+        </div>
+        <h2 class="section-title">Your Claude. Your brokerage. Connected.</h2>
+        <p class="section-subtitle">FloorPricer is a Claude MCP connector. You bring your own Claude subscription and brokerage API keys. We provide the trading brain.</p>
+
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+                <span class="terminal-title">commonalpha-connector</span>
+            </div>
+            <div class="terminal-body">
+<span class="dim">// Step 1: Connect your brokerage</span>
+<span class="prompt">you:</span> <span class="cmd">Connect my Alpaca paper trading account</span>
+<span class="output">Connected to Alpaca (paper). Balance: $100,000.00</span>
+
+<span class="dim">// Step 2: Set your strategy</span>
+<span class="prompt">you:</span> <span class="cmd">Run trailing stop on TSLA. 10% floor. $5,000 position.</span>
+<span class="success">Strategy active. Bought 28 shares TSLA @ $178.42</span>
+<span class="success">Trailing floor set: $160.58 (10% below entry)</span>
+<span class="success">Monitoring every 5 minutes during market hours.</span>
+
+<span class="dim">// Step 3: It runs. You live your life.</span>
+<span class="output">[14:30] TSLA $182.10 | Floor raised to $163.89</span>
+<span class="output">[14:35] TSLA $185.33 | Floor raised to $166.80</span>
+<span class="output">[14:40] TSLA $186.91 | Floor raised to $168.22</span>
+<span class="warn">[14:45] TSLA $184.20 | Above floor. Holding.</span>
+<span class="output">[14:50] TSLA $189.44 | Floor raised to $170.50</span>
+<span class="success">Session P&L: +$308.56 (+6.2%)</span>
+<span class="success">Floor has locked in +$337.24 in gains.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COOPERATIVE -->
+<section class="coop-section" id="cooperative">
+    <div class="container">
+        <div class="section-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            The Cooperative Layer
+        </div>
+        <h2 class="section-title">Protection that belongs to everyone.</h2>
+        <p class="section-subtitle">Trading bots extract from each other. FloorPricer members build shared intelligence that compounds for the collective.</p>
+
+        <div class="coop-grid">
+            <div class="coop-card">
+                <h3>Shared Strategy Library</h3>
+                <p>Members contribute strategies. The collective backtests and improves them. Like open source, but for trading logic. Every member benefits from every other member's insight.</p>
+            </div>
+            <div class="coop-card">
+                <h3>Collective Risk Monitor</h3>
+                <p>If 40% of members are concentrated in the same sector, the system flags systemic risk to the community. Your trailing stop protects you. The collective radar protects everyone.</p>
+            </div>
+            <div class="coop-card">
+                <h3>Hard Intercept Guardrails</h3>
+                <p>The AI cannot execute above your stated risk tolerance without explicit human confirmation. Same physician-grade attestation pattern used in healthcare. Your rules are inviolable.</p>
+            </div>
+            <div class="coop-card">
+                <h3>Cooperative Dividends</h3>
+                <p>Platform revenue goes back to members, not shareholders. As the collective grows, the intelligence compounds and the cost per member drops. Your success funds everyone's tools.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+    <div class="container">
+        <div class="section-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Simple Pricing
+        </div>
+        <h2 class="section-title">Free pipes. Paid brain.</h2>
+        <p class="section-subtitle">The harness is open source. Pay for the intelligence layer.</p>
+
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="price-name">Paper</div>
+                <div class="price-amount">$0<span>/forever</span></div>
+                <div class="price-desc">Learn without risking a dime</div>
+                <ul class="price-features">
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Full harness (open source)</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Paper trading on Alpaca</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Trailing stop strategy</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Community strategies</li>
+                </ul>
+                <a href="#" class="price-btn outline">Start Paper Trading</a>
+            </div>
+
+            <div class="price-card featured">
+                <div class="price-name">Live</div>
+                <div class="price-amount">$29<span>/mo</span></div>
+                <div class="price-desc">Real money. Real automation.</div>
+                <ul class="price-features">
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Everything in Paper</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Live brokerage execution</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Scheduled monitoring</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Ladder buys + Wheel strategy</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Collective risk alerts</li>
+                </ul>
+                <a href="#" class="price-btn primary">Go Live</a>
+            </div>
+
+            <div class="price-card">
+                <div class="price-name">Co-op Member</div>
+                <div class="price-amount">$99<span>/mo</span></div>
+                <div class="price-desc">Own the platform. Earn dividends.</div>
+                <ul class="price-features">
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Everything in Live</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Cooperative ownership stake</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Revenue dividends</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Governance voting rights</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Strategy contribution rewards</li>
+                </ul>
+                <a href="#" class="price-btn outline">Join the Co-op</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="get-started">
+    <h2>Your floor only moves up.</h2>
+    <p>Paper trade for free. Go live when you're ready. Own the platform that protects you.</p>
+    <a href="#" class="btn-primary" style="display: inline-flex;">
+        Start Paper Trading Free
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+    </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-text">FloorPricer &mdash; floorpricer.com</div>
+        <ul class="footer-links">
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Docs</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Terms</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script>
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+    });
+</script>
+
+</body>
+</html>
