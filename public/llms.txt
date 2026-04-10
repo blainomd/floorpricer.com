@@ -1,0 +1,27 @@
+# FloorPricer
+
+> Algorithmic trading platform. Set floors, build ladders, automate entries and exits. Paper trading is free.
+
+## What we do
+FloorPricer provides floor-based trading strategies, trailing stops, ladder buys, and portfolio analytics. Multi-broker support via Alpaca API. Paper trading with real market data. Strategy marketplace for sharing and copying community strategies.
+
+## Features
+- Floor monitoring with alerts
+- Ladder buy automation
+- Trailing stop management
+- Portfolio analytics and risk cockpit
+- Strategy builder and marketplace
+- Multi-broker command center
+
+## Links
+- Website: https://floorpricer.com
+- MCP tools available in Claude Desktop
+
+## MCP connector
+```json
+"floorpricer": {
+  "command": "npx",
+  "args": ["-y", "@anthropic-ai/mcp-remote",
+    "https://solvinghealth.com/mcp"]
+}
+```
