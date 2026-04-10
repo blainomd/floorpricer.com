@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Marketplace | FLOORPRICER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "primary-fixed": "#6ffbbe",
+                    "primary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#95a4bb",
+                    "surface-dim": "#0b1326",
+                    "outline-variant": "#3c4a42",
+                    "inverse-on-surface": "#283044",
+                    "tertiary-fixed": "#d5e3fc",
+                    "secondary-fixed": "#89f5e7",
+                    "on-secondary-fixed": "#00201d",
+                    "on-primary-container": "#00422b",
+                    "surface-variant": "#2d3449",
+                    "background": "#0b1326",
+                    "inverse-primary": "#006c49",
+                    "surface-container": "#171f33",
+                    "outline": "#86948a",
+                    "on-error": "#690005",
+                    "surface": "#0b1326",
+                    "primary-container": "#10b981",
+                    "on-background": "#dae2fd",
+                    "surface-container-low": "#131b2e",
+                    "on-primary": "#003824",
+                    "on-tertiary-container": "#2c3a4d",
+                    "surface-container-lowest": "#060e20",
+                    "secondary": "#6bd8cb",
+                    "on-error-container": "#ffdad6",
+                    "error": "#ffb4ab",
+                    "tertiary": "#b9c7df",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container-highest": "#2d3449",
+                    "surface-bright": "#31394d",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "secondary-container": "#29a195",
+                    "error-container": "#93000a",
+                    "on-primary-fixed": "#002113",
+                    "on-secondary": "#003732",
+                    "surface-tint": "#4edea3",
+                    "on-surface": "#dae2fd",
+                    "on-secondary-fixed-variant": "#005049",
+                    "inverse-surface": "#dae2fd",
+                    "on-tertiary": "#233144",
+                    "on-surface-variant": "#bbcabf",
+                    "surface-container-high": "#222a3d",
+                    "primary": "#4edea3",
+                    "on-secondary-container": "#00302b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(34, 42, 61, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(78, 222, 163, 0.15);
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary selection:text-on-primary">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full w-64 bg-[#060e20] border-r border-[#3c4a42]/15 z-40">
+<div class="p-6">
+<span class="font-headline font-bold text-primary tracking-tight text-lg">OBSIDIAN LEDGER</span>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 hover:bg-[#222a3d] hover:backdrop-blur-xl transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body font-medium text-sm">Terminal</span>
+</a>
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 hover:bg-[#222a3d] hover:backdrop-blur-xl transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-body font-medium text-sm">Brokerage</span>
+</a>
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 hover:bg-[#222a3d] hover:backdrop-blur-xl transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-body font-medium text-sm">Portfolio</span>
+</a>
+<a class="bg-gradient-to-br from-[#4edea3] to-[#10b981] text-[#0b1326] font-bold rounded-lg m-2 p-4 flex items-center gap-3 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="font-body font-medium text-sm">Marketplace</span>
+</a>
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 hover:bg-[#222a3d] hover:backdrop-blur-xl transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">speed</span>
+<span class="font-body font-medium text-sm">Risk</span>
+</a>
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 hover:bg-[#222a3d] hover:backdrop-blur-xl transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-body font-medium text-sm">Security</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen pb-24 md:pb-8">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-6 h-16 w-full bg-[#0b1326] shadow-[0_8px_32px_rgba(218,226,253,0.04)] sticky top-0 z-30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#4edea3]">terminal</span>
+<span class="text-xl font-black tracking-tighter text-[#4edea3] uppercase font-headline">FLOORPRICER</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex bg-surface-container-lowest border border-outline-variant/15 rounded-full px-4 py-1.5 items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">System Latency: 4ms</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User" data-alt="Close up minimalist profile avatar of a professional trader in a dark suit against a geometric neon green background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpRPn9GGp-We_wYnEJae06OVAV8E88fVxY_UY2E6bRwlatXzUa0JjTuR-8yClNPEF-NuTBO-ljEczL2ykua2BYKlj6TP2bmedi2nWRE2iVLd_voG65veN_RMmpv2K6W5p6gJ39tc-tF_5kVQa3EoQTdCcsUHKy2ujg72ihmDfRQoP5DOh6hE7-TsyzIcqjCfE8h34j5Napar8iJVVEaiL3p0kuiZjjK0soSKyjyrErn7KI-dI1c7_eJveV0oq6oOBzytOV9Ajx5NM"/>
+</div>
+</div>
+</header>
+<div class="px-6 py-8 max-w-7xl mx-auto space-y-12">
+<!-- Hero Search & Institutional Filter -->
+<section class="space-y-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<h1 class="text-4xl md:text-6xl font-headline font-bold text-on-surface tracking-tight">Strategy <span class="text-primary italic">Hub</span></h1>
+<p class="text-on-surface-variant max-w-md">Access verified, high-performance quant strategies with direct ledger execution.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+<div class="relative group flex-1 md:w-80">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-lowest border-none ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/50 transition-all font-body" placeholder="Search algorithms, quants..." type="text"/>
+</div>
+<button class="flex items-center justify-center gap-2 bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 rounded-xl px-6 py-4 text-on-surface font-label text-xs tracking-widest uppercase transition-all">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+                            Institutional Only
+                        </button>
+</div>
+</div>
+</section>
+<!-- Featured Strategy - Asymmetric Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 group relative overflow-hidden rounded-full border border-primary/10 bg-surface-container-low emerald-glow p-8 md:p-12">
+<div class="absolute top-0 right-0 p-8">
+<span class="bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label text-[10px] uppercase tracking-tighter border border-primary/20">Featured Alpha</span>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
+<div class="w-20 h-20 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary text-4xl" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div class="space-y-4">
+<div>
+<h2 class="text-3xl font-headline font-bold text-on-surface">AlphaStream V3</h2>
+<p class="text-primary font-mono text-sm tracking-wider">by QuanticLabs</p>
+</div>
+<div class="flex flex-wrap gap-6 items-center">
+<div class="space-y-1">
+<span class="text-on-surface-variant text-[10px] uppercase tracking-widest font-label block">YoY Return</span>
+<span class="text-3xl font-mono font-bold text-primary">+42.8%</span>
+</div>
+<div class="h-10 w-px bg-outline-variant/20"></div>
+<div class="space-y-1">
+<span class="text-on-surface-variant text-[10px] uppercase tracking-widest font-label block">Max Drawdown</span>
+<span class="text-2xl font-mono text-on-surface">4.2%</span>
+</div>
+<div class="h-10 w-px bg-outline-variant/20"></div>
+<div class="space-y-1">
+<span class="text-on-surface-variant text-[10px] uppercase tracking-widest font-label block">Sharpe Ratio</span>
+<span class="text-2xl font-mono text-on-surface">3.81</span>
+</div>
+</div>
+<div class="pt-4 flex gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-xs uppercase font-bold tracking-widest px-8 py-4 rounded-xl hover:shadow-[0_0_20px_rgba(78,222,163,0.3)] active:scale-95 transition-all">
+                                    Subscribe Now
+                                </button>
+<button class="bg-transparent border border-outline-variant text-on-surface font-label text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-surface-container-high transition-all">
+                                    View Logic
+                                </button>
+</div>
+</div>
+</div>
+<!-- Decorative Graphic Background -->
+<div class="absolute -bottom-12 -right-12 w-96 h-96 opacity-10 pointer-events-none">
+<svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.7,-31.4,87.1,-15.7,86.2,-0.5C85.3,14.7,80.1,29.4,72.1,42.5C64.1,55.6,53.3,67.1,40.1,74.7C26.9,82.3,13.5,86,0.3,85.5C-12.9,85,-25.8,80.3,-38.5,73.1C-51.2,65.9,-63.7,56.2,-71.4,43.6C-79.1,31,-82,15.5,-82,0C-82,-15.5,-79.1,-31,-71.4,-43.6C-63.7,-56.2,-51.2,-65.9,-38.5,-73.1C-25.8,-80.3,-12.9,-85,0.1,-85.1C13.1,-85.2,26.2,-80.7,44.7,-76.4Z" fill="#4edea3" transform="translate(100 100)"></path>
+</svg>
+</div>
+</div>
+<!-- Leaderboard Mini Card -->
+<div class="lg:col-span-4 bg-surface-container-low rounded-full border border-outline-variant/15 flex flex-col overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10">
+<h3 class="font-headline font-bold text-on-surface uppercase tracking-tight">Top Quants</h3>
+</div>
+<div class="flex-1">
+<div class="divide-y divide-outline-variant/5">
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="text-primary font-mono text-xs">01</span>
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest overflow-hidden">
+<img alt="Quant 1" data-alt="Portrait of a diverse tech entrepreneur in a modern neon lit office with reflection of code on glass in the foreground" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1tVR71PBhtd9h7_2YXFR1SAc0j0z1PCh4_zIO9o-6jo--mBf73hZeD4MGWxPIae0hxxo-ndkbGe9zH_y1yXzd2XDNI-14lYavCyhy74bFO3WSEEhxUYXi77lNFpBOjviC8l5mU_r_B4KcgxABZU6hmGjtl1L70Jr5jcxnCg1srPkX6gpKskQt7umE7ArFTDzLGKg03IIoaxNrcHU-iVOwLnGE8H61xUSTelzqGrAXDbmzPvDSNbiTQPeOs7iXq_LrOVE5QjBXL6M"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Nexus Capital</p>
+<p class="text-[10px] text-on-surface-variant font-label tracking-widest uppercase">12 Strategies</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="text-primary font-mono text-xs">02</span>
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest overflow-hidden">
+<img alt="Quant 2" data-alt="Professional profile of a financial engineer in a minimalist workspace with holographic data screens around them" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-olYkSXfIFLqr9wDzEPZ3CUMORg944k53NrwjYtq5DQ3SwMRPmcnjFRgUphwVF7q73BUR_LdEVjZpRnK62wCOyZ4GZWrnuHQ_wbIkvZ9kZzBZpYl3Y4T9YQaTbPQu-l8GRfYWBF8ua44BrEYoazaFp60jPTwwEdMKoQp1V7YAUTBcDfvT5LCVzcV-iIcxXAnU6wyZ9zZx9H4Dzm5IjyrojfuYuZNad2RdRDqconwFAvaVCoPwhf5Y75WAxA1W83ABwGfIQp3Wvac"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Echelon Lab</p>
+<p class="text-[10px] text-on-surface-variant font-label tracking-widest uppercase">8 Strategies</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="text-primary font-mono text-xs">03</span>
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest overflow-hidden">
+<img alt="Quant 3" data-alt="Close-up of a digital human avatar representing an AI quantitative researcher with green data flowing through the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsvEKWMMR7XsVldkURgrT_k6137E8W333vg66e-DaucaVJ0tnqQYbA1cwjgmaafFVIUnH029kZE84V-i06cwuJ0USRBjbtqQQjWLCErD-K2uwfx8j7_FS7cqv5Q8NqpcRRPAzc9n9E3on6uOEZ5qP26bnpTMKCCUjx8QxijvnXrKMX5_BrqbIOhwkBXs0G00_yvDZM_Vno0Rlu8a-DqvcOpo-Ku3dL2wl56QvOFeo6LIsMKWrTDWnjaQW6QSL34tO2riuR5PW2TcQ"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Velocity AR</p>
+<p class="text-[10px] text-on-surface-variant font-label tracking-widest uppercase">21 Strategies</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-lowest/50">
+<a class="text-[10px] text-primary font-label uppercase font-bold tracking-widest flex items-center justify-center gap-2" href="#">View All Developers <span class="material-symbols-outlined text-xs">chevron_right</span></a>
+</div>
+</div>
+</section>
+<!-- Marketplace Grid -->
+<section class="space-y-6">
+<div class="flex items-center justify-between border-b border-outline-variant/15 pb-4">
+<h2 class="text-xl font-headline font-bold text-on-surface uppercase tracking-tight">Active Strategies</h2>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-surface-container-high text-primary"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high"><span class="material-symbols-outlined">list</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Strategy Card 1 -->
+<div class="glass-panel border border-outline-variant/10 rounded-full p-6 space-y-6 hover:bg-surface-bright transition-all group">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-surface group-hover:text-primary transition-colors">Vol-Crusher ETH</h3>
+<p class="text-xs text-on-surface-variant">Arbitrage • Low Risk</p>
+</div>
+<div class="text-right">
+<p class="text-primary font-mono text-lg font-bold">+18.4%</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-label">30D ROI</p>
+</div>
+</div>
+<!-- Sparkline Mockup -->
+<div class="h-16 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[30%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[90%] rounded-t-sm"></div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/5">
+<div class="space-y-0.5">
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest font-label">Rental Cost</p>
+<p class="font-mono text-on-surface font-bold text-lg">$450<span class="text-xs text-on-surface-variant/60 font-normal">/mo</span></p>
+</div>
+<button class="bg-surface-container-highest border border-outline-variant text-primary hover:bg-primary hover:text-on-primary font-label text-[10px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-lg transition-all">
+                                Subscribe
+                            </button>
+</div>
+</div>
+<!-- Strategy Card 2 -->
+<div class="glass-panel border border-outline-variant/10 rounded-full p-6 space-y-6 hover:bg-surface-bright transition-all group">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-surface group-hover:text-primary transition-colors">Neural-Net BTC</h3>
+<p class="text-xs text-on-surface-variant">Deep Learning • High Vol</p>
+</div>
+<div class="text-right">
+<p class="text-primary font-mono text-lg font-bold">+62.1%</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-label">30D ROI</p>
+</div>
+</div>
+<div class="h-16 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[50%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[80%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[65%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[95%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[100%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[95%] rounded-t-sm"></div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/5">
+<div class="space-y-0.5">
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest font-label">Rental Cost</p>
+<p class="font-mono text-on-surface font-bold text-lg">$1,200<span class="text-xs text-on-surface-variant/60 font-normal">/mo</span></p>
+</div>
+<button class="bg-surface-container-highest border border-outline-variant text-primary hover:bg-primary hover:text-on-primary font-label text-[10px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-lg transition-all">
+                                Subscribe
+                            </button>
+</div>
+</div>
+<!-- Strategy Card 3 -->
+<div class="glass-panel border border-outline-variant/10 rounded-full p-6 space-y-6 hover:bg-surface-bright transition-all group">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-surface group-hover:text-primary transition-colors">Forex Ghost V2</h3>
+<p class="text-xs text-on-surface-variant">Macro • Med Risk</p>
+</div>
+<div class="text-right">
+<p class="text-primary font-mono text-lg font-bold">+12.2%</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-label">30D ROI</p>
+</div>
+</div>
+<div class="h-16 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[35%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[50%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[58%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all h-[65%] rounded-t-sm"></div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/5">
+<div class="space-y-0.5">
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest font-label">Rental Cost</p>
+<p class="font-mono text-on-surface font-bold text-lg">$275<span class="text-xs text-on-surface-variant/60 font-normal">/mo</span></p>
+</div>
+<button class="bg-surface-container-highest border border-outline-variant text-primary hover:bg-primary hover:text-on-primary font-label text-[10px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-lg transition-all">
+                                Subscribe
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-[#0b1326]/60 backdrop-blur-xl border-t border-[#3c4a42]/15 flex justify-around items-center py-3 px-4 shadow-[0_-4px_20px_rgba(78,222,163,0.05)]">
+<a class="flex flex-col items-center text-[#dae2fd]/50" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Terminal</span>
+</a>
+<a class="flex flex-col items-center text-[#dae2fd]/50" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Portfolio</span>
+</a>
+<a class="flex flex-col items-center text-[#4edea3] scale-110" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Market</span>
+</a>
+<a class="flex flex-col items-center text-[#dae2fd]/50" href="#">
+<span class="material-symbols-outlined">speed</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Risk</span>
+</a>
+<a class="flex flex-col items-center text-[#dae2fd]/50" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Security</span>
+</a>
+</nav>
+<!-- Contextual FAB -->
+<button class="fixed right-6 bottom-24 md:bottom-8 z-40 bg-gradient-to-br from-primary to-primary-container text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-primary/30 hover:scale-105 active:scale-95 transition-all group">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
+</button>
+</body></html>

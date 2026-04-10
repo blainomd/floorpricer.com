@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#00422b",
+                    "surface-container-highest": "#2d3449",
+                    "on-background": "#dae2fd",
+                    "primary-container": "#10b981",
+                    "inverse-on-surface": "#283044",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "surface-container": "#171f33",
+                    "surface-container-lowest": "#060e20",
+                    "surface": "#0b1326",
+                    "on-surface": "#dae2fd",
+                    "on-surface-variant": "#bbcabf",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "tertiary-fixed": "#d5e3fc",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary-fixed": "#00201d",
+                    "on-primary-fixed": "#002113",
+                    "error": "#ffb4ab",
+                    "primary": "#4edea3",
+                    "secondary-container": "#29a195",
+                    "inverse-surface": "#dae2fd",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "secondary": "#6bd8cb",
+                    "on-tertiary-container": "#2c3a4d",
+                    "tertiary-container": "#95a4bb",
+                    "on-secondary": "#003732",
+                    "surface-container-high": "#222a3d",
+                    "on-error": "#690005",
+                    "background": "#0b1326",
+                    "surface-tint": "#4edea3",
+                    "inverse-primary": "#006c49",
+                    "on-secondary-fixed-variant": "#005049",
+                    "surface-dim": "#0b1326",
+                    "on-primary-fixed-variant": "#005236",
+                    "error-container": "#93000a",
+                    "tertiary": "#b9c7df",
+                    "on-tertiary": "#233144",
+                    "on-primary": "#003824",
+                    "on-secondary-container": "#00302b",
+                    "outline-variant": "#3c4a42",
+                    "secondary-fixed": "#89f5e7",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#31394d",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-variant": "#2d3449",
+                    "outline": "#86948a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(34, 42, 61, 0.6);
+        backdrop-filter: blur(12px);
+      }
+      .obsidian-gradient {
+        background: linear-gradient(135deg, #4edea3 0%, #10b981 100%);
+      }
+      .ghost-border {
+        outline: 1px solid rgba(60, 74, 66, 0.15);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#131b2e] shadow-[0_8px_32px_rgba(218,226,253,0.04)] z-50">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#4edea3]" data-icon="bubble_chart">bubble_chart</span>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-xl bg-gradient-to-br from-[#4edea3] to-[#10b981] bg-clip-text text-transparent">FloorPricer</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest flex items-center justify-center">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Professional user profile avatar with clean lighting and neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIspleZRaYpjw0JYc6M6HbpOScoOr2ho2TfA7AIN22sDOc0CVbpfXMwQdPnnD3DDLYcamOPnPfEmMMrEbeBD9YP75dEy_w8I2_qY5BvFh9ZzipWog7MZM_fEQOge2IDCs8bhne85k22Mo7LdX4Mrg1J7aPXHnQCGHhnMPnfjPFSyOco0d_quYR0pigC9tIB8-3jHULn-niBE6vwnc_2As5xwIL3ilmEaUPPUi3bFHFNcIdGGrq418RGii0L9fycQg13kmWT1B7tgc"/>
+</div>
+</div>
+</header>
+<main class="px-6 py-8 max-w-md mx-auto">
+<!-- Header Section -->
+<section class="mb-12 text-center">
+<h2 class="font-headline text-4xl font-extrabold tracking-tight mb-4 text-on-surface leading-tight">
+                Institutional <span class="text-primary">Execution</span> for All.
+            </h2>
+<p class="text-on-surface-variant text-sm font-medium leading-relaxed px-4">
+                Choose the velocity that matches your edge. Real-time liquidity, zero-latency routing.
+            </p>
+</section>
+<!-- Pricing Tiers Layout (Mobile Focused Column) -->
+<div class="space-y-6">
+<!-- Tier 1: Paper -->
+<div class="glass-card rounded-xl p-6 ghost-border relative overflow-hidden transition-all active:scale-[0.98]">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-1">Paper</h3>
+<div class="flex items-baseline gap-1">
+<span class="font-mono text-3xl font-bold text-on-surface">$0</span>
+<span class="text-on-surface-variant text-xs">/mo</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="terminal">terminal</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-sm text-on-surface/80">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Simulated Exchange Environment
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface/80">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Delayed Market Data (15m)
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface/80">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Basic Strategy Builder
+                    </li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-outline-variant/30 text-on-surface font-label text-sm tracking-wide hover:bg-surface-container-highest transition-colors">
+                    START TRAINING
+                </button>
+</div>
+<!-- Tier 2: Live (Most Popular) -->
+<div class="glass-card rounded-xl p-1 bg-gradient-to-br from-primary/30 to-transparent relative active:scale-[0.98] transition-transform">
+<div class="bg-surface-container-high rounded-[calc(0.75rem-1px)] p-6">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-on-primary-container font-label text-[10px] font-bold tracking-widest uppercase rounded-full shadow-lg shadow-primary/20">
+                        Most Popular
+                    </div>
+<div class="flex justify-between items-start mb-6 mt-2">
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-primary mb-1">Live</h3>
+<div class="flex items-baseline gap-1">
+<span class="font-mono text-4xl font-bold text-on-surface">$29</span>
+<span class="text-on-surface-variant text-xs">/mo</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Direct Exchange Connectivity
+                        </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Real-time L2 Market Depth
+                        </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Advanced Risk Management
+                        </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Custom Webhook Alerts
+                        </li>
+</ul>
+<button class="w-full py-4 rounded-xl obsidian-gradient text-on-primary-container font-label font-bold text-sm tracking-wide shadow-xl shadow-primary/10">
+                        GO LIVE NOW
+                    </button>
+</div>
+</div>
+<!-- Tier 3: Co-op Member -->
+<div class="glass-card rounded-xl p-6 ghost-border relative overflow-hidden active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-tertiary mb-1">Co-op Member</h3>
+<div class="flex items-baseline gap-1">
+<span class="font-mono text-3xl font-bold text-on-surface">$99</span>
+<span class="text-on-surface-variant text-xs">/mo</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary" data-icon="hub">hub</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-sm text-on-surface/90">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Shared Liquidity Pools
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface/90">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Alpha-Stream Access
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface/90">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Priority API Endpoints
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface/90">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Zero-Slippage Routing
+                    </li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-surface-container-highest text-tertiary border border-tertiary/20 font-label text-sm tracking-wide">
+                    JOIN CO-OP
+                </button>
+</div>
+</div>
+<!-- Extra Info Footer -->
+<div class="mt-12 p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/10">
+<div class="flex items-center gap-4 mb-3">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="security">security</span>
+</div>
+<h4 class="font-headline font-bold text-sm">Enterprise Grade Security</h4>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                All tiers include AES-256 encryption and biometric vault access. Institutional accounts available upon request for larger deployments.
+            </p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center pb-6 pt-3 px-4 bg-[#060e20]/60 backdrop-blur-xl border-t border-[#3c4a42]/15 z-50">
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Terminal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Strategies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Brokers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Leaders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#4edea3] bg-[#222a3d]/40 rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Pricing</span>
+</a>
+</nav>
+</body></html>

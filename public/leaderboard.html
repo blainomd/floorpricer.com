@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#00422b",
+                    "surface-container-highest": "#2d3449",
+                    "on-background": "#dae2fd",
+                    "primary-container": "#10b981",
+                    "inverse-on-surface": "#283044",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "surface-container": "#171f33",
+                    "surface-container-lowest": "#060e20",
+                    "surface": "#0b1326",
+                    "on-surface": "#dae2fd",
+                    "on-surface-variant": "#bbcabf",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "tertiary-fixed": "#d5e3fc",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary-fixed": "#00201d",
+                    "on-primary-fixed": "#002113",
+                    "error": "#ffb4ab",
+                    "primary": "#4edea3",
+                    "secondary-container": "#29a195",
+                    "inverse-surface": "#dae2fd",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "secondary": "#6bd8cb",
+                    "on-tertiary-container": "#2c3a4d",
+                    "tertiary-container": "#95a4bb",
+                    "on-secondary": "#003732",
+                    "surface-container-high": "#222a3d",
+                    "on-error": "#690005",
+                    "background": "#0b1326",
+                    "surface-tint": "#4edea3",
+                    "inverse-primary": "#006c49",
+                    "on-secondary-fixed-variant": "#005049",
+                    "surface-dim": "#0b1326",
+                    "on-primary-fixed-variant": "#005236",
+                    "error-container": "#93000a",
+                    "tertiary": "#b9c7df",
+                    "on-tertiary": "#233144",
+                    "on-primary": "#003824",
+                    "on-secondary-container": "#00302b",
+                    "outline-variant": "#3c4a42",
+                    "secondary-fixed": "#89f5e7",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#31394d",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-variant": "#2d3449",
+                    "outline": "#86948a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(34, 42, 61, 0.6);
+        backdrop-filter: blur(12px);
+      }
+      .neon-glow {
+        box-shadow: 0 0 20px rgba(78, 222, 163, 0.15);
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen pb-32">
+<!-- Top Navigation -->
+<nav class="w-full top-0 sticky z-50 bg-[#0b1326] shadow-[0_8px_32px_rgba(218,226,253,0.04)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#4edea3]" style="font-variation-settings: 'FILL' 1;">bubble_chart</span>
+<span class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-xl bg-gradient-to-br from-[#4edea3] to-[#10b981] bg-clip-text text-transparent">FloorPricer</span>
+</div>
+<div class="w-8 h-8 rounded-full border border-outline-variant/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional trader with neutral expression and minimalist lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo1gLP-KLRMvbq6rB6Bo8vifid2rXlbLDMyEpqRF7iIpu4NtWkuqXVMprOJ36OCZyf7whWm5X7kFX_SYJifjOOBm4r2VdyHqFWeD16kmELHvkTOPsUkcVqAj94tv5OPaOgWEiVNu11WLbwNNV13tMetDLLXlj1q4LpgIeCHpJHQY9n2Se5aX31n3IvMvDWlIpHE4Em2AGwrPr85LHmTP-C-7F7EFFFXU6LCSEwV3ZES7cTtFkbO9nofdyrphJWQEQDZarN4S8JOkM"/>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="px-5 pt-8">
+<!-- Hero Section -->
+<header class="mb-10">
+<div class="flex justify-between items-end mb-2">
+<h1 class="font-headline text-4xl font-extrabold tracking-tighter leading-none">Leaders</h1>
+<div class="px-3 py-1 bg-surface-container-high rounded-full border border-outline-variant/10">
+<span class="font-label text-[10px] uppercase tracking-widest text-primary">Live Data</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-body text-sm max-w-[280px]">Tracking the top-performing algorithmic strategies across global markets.</p>
+</header>
+<!-- Bento Grid: Top 3 Winners -->
+<section class="grid grid-cols-2 gap-4 mb-10">
+<div class="col-span-2 glass-card rounded-xl p-5 border border-primary/20 relative overflow-hidden group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="relative z-10">
+<span class="font-label text-[10px] uppercase tracking-widest text-primary mb-2 block">Daily Champion</span>
+<div class="flex items-center gap-4 mb-4">
+<img class="w-14 h-14 rounded-xl border-2 border-primary" data-alt="stylized 3D avatar of a digital strategist with high tech glasses and futuristic attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtMyo4sO34xItb4n8VSkLhS4HGzDjM8lKMI7amD3_bwbeEbzaWyJHn6veNTrnfTPSB4NxrqfyYYpKSTsyRKJ3ljoC24QxFtYiE1VfPCvKILhsA8VodmiOy6g12Na7uh3nBb0xJGxUwmVpY881tf0iGppr5hXvnMyCgyf893FYtZRgOI3nkV1d-TyfOvhK8U1dna0YTzmqw459z7OvBa_xRD87ybzv8PTV8iWQR33FDYm8SLE9GdxWbekJwdZmoL77xtYqNzHTlH9M"/>
+<div>
+<h3 class="font-headline text-xl font-bold">@AlphaQuant_9</h3>
+<p class="font-mono text-primary text-lg">+14.2% Today</p>
+</div>
+</div>
+<div class="h-1 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container w-[88%]"></div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-4 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<span class="font-mono text-xs text-primary">+8.4%</span>
+</div>
+<h4 class="font-headline font-bold text-sm mb-1">Neo_Flow</h4>
+<p class="text-[10px] text-on-surface-variant">Consistent Returns</p>
+</div>
+<div class="glass-card rounded-xl p-4 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<span class="font-mono text-xs text-primary">+7.1%</span>
+</div>
+<h4 class="font-headline font-bold text-sm mb-1">Flash_Mkt</h4>
+<p class="text-[10px] text-on-surface-variant">High Volatility</p>
+</div>
+</section>
+<!-- Biggest Winners Table -->
+<section class="mb-12">
+<h2 class="font-headline text-xl font-bold mb-6 flex items-center gap-2">
+                Biggest Winners Today
+                <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+</h2>
+<div class="space-y-6">
+<!-- Table Header -->
+<div class="grid grid-cols-12 px-2 text-[10px] font-label uppercase tracking-widest text-on-surface-variant">
+<div class="col-span-5">Trader</div>
+<div class="col-span-4 text-right">Today's Gain</div>
+<div class="col-span-3 text-right">Portfolio</div>
+</div>
+<!-- Table Body -->
+<div class="space-y-4">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 items-center px-2 py-1 group cursor-pointer">
+<div class="col-span-5 flex items-center gap-3">
+<span class="font-mono text-xs text-on-surface-variant">04</span>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-sm">BitLord_X</span>
+<span class="text-[10px] text-on-surface-variant">Scalp Expert</span>
+</div>
+</div>
+<div class="col-span-4 text-right font-mono text-primary font-bold">+5.92%</div>
+<div class="col-span-3 text-right font-mono text-sm">$422.1k</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 items-center px-2 py-1">
+<div class="col-span-5 flex items-center gap-3">
+<span class="font-mono text-xs text-on-surface-variant">05</span>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-sm">Zenith_AI</span>
+<span class="text-[10px] text-on-surface-variant">Arbitrage</span>
+</div>
+</div>
+<div class="col-span-4 text-right font-mono text-primary font-bold">+4.11%</div>
+<div class="col-span-3 text-right font-mono text-sm">$891.0k</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 items-center px-2 py-1">
+<div class="col-span-5 flex items-center gap-3">
+<span class="font-mono text-xs text-on-surface-variant">06</span>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-sm">Macro_Min</span>
+<span class="text-[10px] text-on-surface-variant">Swing Trade</span>
+</div>
+</div>
+<div class="col-span-4 text-right font-mono text-primary font-bold">+3.85%</div>
+<div class="col-span-3 text-right font-mono text-sm">$1.2M</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 items-center px-2 py-1 opacity-60">
+<div class="col-span-5 flex items-center gap-3">
+<span class="font-mono text-xs text-on-surface-variant">07</span>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-sm">Viper_01</span>
+<span class="text-[10px] text-on-surface-variant">Momentum</span>
+</div>
+</div>
+<div class="col-span-4 text-right font-mono text-primary font-bold">+2.10%</div>
+<div class="col-span-3 text-right font-mono text-sm">$32.5k</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bar -->
+<section class="mb-12 glass-card rounded-2xl p-6 border border-outline-variant/10">
+<div class="flex overflow-x-auto hide-scrollbar gap-10 pb-2">
+<div class="flex-shrink-0">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Active Paper Traders</p>
+<p class="font-headline text-2xl font-bold">142,809</p>
+</div>
+<div class="flex-shrink-0">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Best Single Day Gain</p>
+<p class="font-headline text-2xl font-bold text-primary">+82.4%</p>
+</div>
+<div class="flex-shrink-0">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Trades Executed Today</p>
+<p class="font-headline text-2xl font-bold">1.24M</p>
+</div>
+</div>
+</section>
+<!-- Call to Action -->
+<section class="mb-20 text-center">
+<div class="p-8 rounded-3xl bg-gradient-to-br from-surface-container-high to-surface-container-low border border-primary/10 neon-glow">
+<h3 class="font-headline text-2xl font-bold mb-4">Ready to compete?</h3>
+<p class="text-on-surface-variant text-sm mb-8">Join the elite ranks of FloorPricer traders and track your performance in real-time.</p>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary-container py-4 rounded-xl font-headline font-extrabold text-lg transition-transform active:scale-95 duration-200">
+                    Join the Leaderboard Free
+                </button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="pb-10 border-t border-outline-variant/10 pt-10 text-center">
+<div class="flex justify-center gap-6 mb-6">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">public</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">share</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">help_outline</span>
+</div>
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/40">FloorPricer Terminal © 2024</p>
+<p class="font-label text-[8px] uppercase tracking-widest text-on-surface-variant/20 mt-2 px-10 leading-relaxed">Past performance is not indicative of future results. For simulation purposes only.</p>
+</footer>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center pb-6 pt-3 px-4 bg-[#060e20]/60 backdrop-blur-xl border-t border-[#3c4a42]/15 z-50 rounded-t-2xl shadow-[0_-8px_32px_rgba(0,0,0,0.4)]">
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">terminal</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider">Terminal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">account_tree</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider">Strategies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">account_balance</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider">Brokers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#4edea3] bg-[#222a3d]/40 rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider">Leaders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">payments</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider">Pricing</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#00422b",
+                    "surface-container-highest": "#2d3449",
+                    "on-background": "#dae2fd",
+                    "primary-container": "#10b981",
+                    "inverse-on-surface": "#283044",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "surface-container": "#171f33",
+                    "surface-container-lowest": "#060e20",
+                    "surface": "#0b1326",
+                    "on-surface": "#dae2fd",
+                    "on-surface-variant": "#bbcabf",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "tertiary-fixed": "#d5e3fc",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary-fixed": "#00201d",
+                    "on-primary-fixed": "#002113",
+                    "error": "#ffb4ab",
+                    "primary": "#4edea3",
+                    "secondary-container": "#29a195",
+                    "inverse-surface": "#dae2fd",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "secondary": "#6bd8cb",
+                    "on-tertiary-container": "#2c3a4d",
+                    "tertiary-container": "#95a4bb",
+                    "on-secondary": "#003732",
+                    "surface-container-high": "#222a3d",
+                    "on-error": "#690005",
+                    "background": "#0b1326",
+                    "surface-tint": "#4edea3",
+                    "inverse-primary": "#006c49",
+                    "on-secondary-fixed-variant": "#005049",
+                    "surface-dim": "#0b1326",
+                    "on-primary-fixed-variant": "#005236",
+                    "error-container": "#93000a",
+                    "tertiary": "#b9c7df",
+                    "on-tertiary": "#233144",
+                    "on-primary": "#003824",
+                    "on-secondary-container": "#00302b",
+                    "outline-variant": "#3c4a42",
+                    "secondary-fixed": "#89f5e7",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#31394d",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-variant": "#2d3449",
+                    "outline": "#86948a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(34, 42, 61, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(60, 74, 66, 0.15);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #4edea3 0%, #10b981 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(78, 222, 163, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#0b1326] shadow-[0_8px_32px_rgba(218,226,253,0.04)]">
+<nav class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#4edea3] text-2xl">bubble_chart</span>
+<span class="text-xl font-bold bg-gradient-to-br from-[#4edea3] to-[#10b981] bg-clip-text text-transparent font-['Plus_Jakarta_Sans'] tracking-tight">FloorPricer</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-label text-sm tracking-wider">
+<a class="text-[#4edea3] transition-colors hover:bg-[#222a3d] px-3 py-2 rounded-lg" href="#">Terminal</a>
+<a class="text-[#dae2fd] transition-colors hover:bg-[#222a3d] px-3 py-2 rounded-lg" href="#">Strategies</a>
+<a class="text-[#dae2fd] transition-colors hover:bg-[#222a3d] px-3 py-2 rounded-lg" href="#">Brokers</a>
+<a class="text-[#dae2fd] transition-colors hover:bg-[#222a3d] px-3 py-2 rounded-lg" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block font-label text-xs uppercase tracking-widest text-primary border border-outline-variant/30 px-6 py-2 rounded-xl hover:bg-surface-container-high transition-all">Login</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant/20 overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMIzPdWdcK2FZRQmx__AId1qL-zPAEAyl4WUIXM1Vw4r776a0ncajPqYKCzFf4LGfF_iraz9RC_LtLm5xaLimLXBjBAXXjS8_uo-jas3uclbLM_0kOS3NI4aW6DdEkDZ0VpXSvCh5kl5eM0oR1OntlonBvaCz-Wqz1BiEOEvAKlo9741ybhVZ1jqJv3HcsCmNcDosd5CnNe9Di-WIN4-z2OddSbxV3Dy6eaxeGvSIv_yseuwGTEiYWVYKSjLVWeiWeeNGcE_iw3nw"/>
+</div>
+</div>
+</nav>
+</header>
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative pt-20 pb-32 overflow-hidden px-6">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none -z-10 opacity-20">
+<div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-secondary-container rounded-full blur-[120px]"></div>
+</div>
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+<div class="flex-1 text-center lg:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20 mb-8">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label text-[10px] uppercase tracking-widest text-primary">Now Live in Beta</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
+                        Your floor <br/><span class="bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">only moves up.</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+                        Precision algorithmic hedging for the retail trader. Protect your gains and automate your floor price with obsidian-grade execution.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+<button class="primary-gradient text-on-primary-container font-label font-bold px-10 py-5 rounded-xl shadow-[0_8px_24px_rgba(78,222,163,0.2)] active:scale-95 transition-all text-sm uppercase tracking-widest">
+                            Connect Your Brokerage
+                        </button>
+<button class="glass-card text-on-surface font-label font-bold px-10 py-5 rounded-xl active:scale-95 transition-all text-sm uppercase tracking-widest">
+                            View Live Demo
+                        </button>
+</div>
+<div class="mt-12 flex items-center justify-center lg:justify-start gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
+<span class="font-mono text-xs">TRUSTED BY 20k+ QUANTS</span>
+</div>
+</div>
+<div class="flex-1 relative">
+<div class="glass-card p-1 rounded-[2.5rem] relative z-10 shadow-2xl">
+<img class="rounded-[2.2rem] w-full max-w-[400px] mx-auto border border-outline-variant/10" data-alt="Modern mobile app interface displaying real-time financial trading charts with glowing green neon lines on a deep dark blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqSKZ01xUfU5mzs6m4-th2UHh-TWES4FbsXMzMz3_4IY9jrEBsG15KkPF5vbDrFM7zYjmiFFZYr7lqXs5IzArkI4fblbVkoQ_A3om0pPyK-3FHoPx4NHxPtlZupPGde3hlyd2q1zp2psjB_jzqdhuJt_6LOMfjIdC4hbLMBSbr-PzIKCuk1o9oI39huq4jmLz5iey2qHlk7YLw9lA40UuUuYyP72mWtDYprKtSS4TLPs9ujePZGLn9F3LKiIR1ISHVwcWmzcGw9iY"/>
+<!-- Floating Data Widget 1 -->
+<div class="absolute -left-8 top-1/4 glass-card p-4 rounded-2xl shadow-xl hidden sm:block">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-xl">trending_up</span>
+</div>
+<div>
+<div class="text-[10px] font-label text-on-surface-variant uppercase">Floor Level</div>
+<div class="font-mono text-lg text-primary">$42,492.10</div>
+</div>
+</div>
+</div>
+<!-- Floating Data Widget 2 -->
+<div class="absolute -right-8 bottom-1/4 glass-card p-4 rounded-2xl shadow-xl hidden sm:block">
+<div class="flex items-center gap-3">
+<div class="bg-secondary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-xl">security</span>
+</div>
+<div>
+<div class="text-[10px] font-label text-on-surface-variant uppercase">Risk Status</div>
+<div class="font-mono text-lg text-secondary">Secured</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Benefits -->
+<section class="py-24 px-6 bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Feature Large -->
+<div class="md:col-span-8 glass-card p-10 rounded-[2rem] flex flex-col justify-between min-h-[400px] group overflow-hidden relative">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-20 -mt-20 group-hover:bg-primary/10 transition-all duration-500"></div>
+<div>
+<span class="font-label text-xs text-primary uppercase tracking-[0.2em] mb-4 block">Risk-Free Environment</span>
+<h3 class="font-headline text-4xl font-bold mb-4">Paper trading is free</h3>
+<p class="text-on-surface-variant text-lg max-w-md leading-relaxed">
+                                Test your strategies with zero capital risk. Our high-fidelity simulation engine uses 1:1 real-time exchange data.
+                            </p>
+</div>
+<div class="flex items-center gap-4 mt-8">
+<button class="font-label text-xs uppercase tracking-widest bg-surface-container-high px-6 py-3 rounded-xl border border-outline-variant/20 hover:border-primary/40 transition-all">Open Sandbox</button>
+<span class="font-mono text-[10px] text-primary">LATENCY: &lt; 2ms</span>
+</div>
+</div>
+<!-- Feature Small -->
+<div class="md:col-span-4 glass-card p-10 rounded-[2rem] flex flex-col justify-between group">
+<div class="bg-surface-container-high w-14 h-14 rounded-2xl flex items-center justify-center border border-outline-variant/20 mb-6 group-hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">auto_mode</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold mb-4">Set and forget</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                Deploy strategies once. Our cloud executors maintain your floor price 24/7, even when you're offline.
+                            </p>
+</div>
+</div>
+<!-- Feature Small 2 -->
+<div class="md:col-span-4 glass-card p-10 rounded-[2rem] flex flex-col justify-between group">
+<div class="bg-surface-container-high w-14 h-14 rounded-2xl flex items-center justify-center border border-outline-variant/20 mb-6 group-hover:border-secondary/50 transition-all">
+<span class="material-symbols-outlined text-secondary text-3xl">terminal</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold mb-4">Execution API</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                Raw performance. Connect via our low-latency API for custom integration into your existing tech stack.
+                            </p>
+</div>
+</div>
+<!-- Feature Large 2 -->
+<div class="md:col-span-8 glass-card p-1 md:p-10 rounded-[2rem] overflow-hidden group">
+<div class="flex flex-col md:flex-row h-full gap-8">
+<div class="p-8 md:p-0 flex flex-col justify-center flex-1">
+<span class="font-label text-xs text-secondary uppercase tracking-[0.2em] mb-4 block">Unified Control</span>
+<h3 class="font-headline text-4xl font-bold mb-4">The Multi-Broker Command Center</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                                    Link unlimited accounts. Manage your entire portfolio's safety floor from a single, obsidian-themed dashboard.
+                                </p>
+</div>
+<div class="flex-1 bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10">
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-surface-container-high rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-500/20"></div>
+<span class="font-mono text-sm">Interactive Brokers</span>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-high rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-red-500/20"></div>
+<span class="font-mono text-sm">TD Ameritrade</span>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-high rounded-xl opacity-40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-orange-500/20"></div>
+<span class="font-mono text-sm">Robinhood</span>
+</div>
+<span class="text-[10px] font-label">PENDING</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Competitive Advantage -->
+<section class="py-32 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-headline text-4xl md:text-6xl font-extrabold mb-6">They have robots.<br/><span class="text-primary">You have a phone.</span></h2>
+<p class="text-on-surface-variant text-lg max-w-2xl mx-auto leading-relaxed">
+                        Institutional HFTs spend millions on infrastructure. FloorPricer levels the playing field, putting professional-grade hedging tools in your pocket.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="space-y-12">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<div>
+<h4 class="font-headline text-xl font-bold mb-2">Micro-Second Response</h4>
+<p class="text-on-surface-variant">Our servers sit directly adjacent to exchange centers. When your price is hit, we move faster than any human possibly could.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<h4 class="font-headline text-xl font-bold mb-2">Advanced Analytics</h4>
+<p class="text-on-surface-variant">Visualize your risk exposure in real-time. Understand how your floor affects your Greek profile and overall margin requirements.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">shield</span>
+</div>
+<div>
+<h4 class="font-headline text-xl font-bold mb-2">Institutional Security</h4>
+<p class="text-on-surface-variant">We never touch your capital. We only execute orders. Your assets remain safely with your regulated brokerage.</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/10 blur-[100px] -z-10"></div>
+<div class="glass-card rounded-[2rem] overflow-hidden aspect-video border border-outline-variant/20 shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Futuristic trading desk with multiple monitors showing complex financial data visualizations and neural network patterns in neon emerald" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi718x_ziBKo0LWEB9SFJhYHY4McmhzAptiNhQEOQcTHqSOt2yZ4JrKOmvHAzIBVoABFqkDH0plS1U8rNdxsrmRU7Y5JXRj0jev5buswzh823zUOODcSXpOCxEzxkrpI_LYFiyrSWsx5FdgTOzOQ9CSdLBieiNEBc0oq8aU4o17MbfedfAoTRX4NhSTV69KKuLFq9MpYlxeU-J9DOiZnr4Dl34rf0AD-Ns4yOr182mDoA2odVmgzNk_94ytxIL2ScNC7pXtVd1mKU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8">
+<span class="font-mono text-[10px] text-primary-container bg-on-primary-container px-3 py-1 rounded-full uppercase">Exchange Latency: 0.14ms</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-6">
+<div class="max-w-5xl mx-auto glass-card p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden">
+<div class="absolute -top-20 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-[80px]"></div>
+<div class="absolute -bottom-20 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-[80px]"></div>
+<h2 class="font-headline text-4xl md:text-6xl font-extrabold mb-8 relative z-10">Stop watching the clock. <br/>Start trading with a floor.</h2>
+<p class="text-on-surface-variant text-lg mb-12 max-w-xl mx-auto relative z-10">Join 5,000+ traders who have automated their downside risk. Get started with your first strategy in under 3 minutes.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+<button class="primary-gradient text-on-primary-container font-label font-bold px-12 py-5 rounded-xl shadow-[0_8px_24px_rgba(78,222,163,0.3)] active:scale-95 transition-all text-sm uppercase tracking-widest">
+                        Connect Broker Now
+                    </button>
+<button class="bg-surface-container-lowest text-on-surface font-label font-bold px-12 py-5 rounded-xl border border-outline-variant/20 active:scale-95 transition-all text-sm uppercase tracking-widest">
+                        Explore Pricing
+                    </button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="py-12 px-6 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#4edea3] text-2xl">bubble_chart</span>
+<span class="text-xl font-bold text-on-surface font-headline tracking-tight">FloorPricer</span>
+</div>
+<div class="flex gap-10 font-label text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="hover:text-primary transition-colors" href="#">Discord</a>
+<a class="hover:text-primary transition-colors" href="#">Github</a>
+<a class="hover:text-primary transition-colors" href="#">Docs</a>
+</div>
+<p class="font-mono text-[10px] text-on-surface-variant opacity-50 uppercase">© 2024 OBSIDIAN LEDGER TECH. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center pb-6 pt-3 px-4 bg-[#060e20]/60 backdrop-blur-xl z-50 rounded-t-2xl border-t border-[#3c4a42]/15 shadow-[0_-8px_32px_rgba(0,0,0,0.4)]">
+<a class="flex flex-col items-center justify-center text-[#4edea3] bg-[#222a3d]/40 rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Terminal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 hover:text-[#4edea3] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Strategies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 hover:text-[#4edea3] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Brokers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 hover:text-[#4edea3] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Leaders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dae2fd]/60 hover:text-[#4edea3] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-wider mt-1">Pricing</span>
+</a>
+</nav>
+</body></html>

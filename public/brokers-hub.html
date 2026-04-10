@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#222a3d",
+                    "on-tertiary-container": "#2c3a4d",
+                    "tertiary-fixed": "#d5e3fc",
+                    "surface-container": "#171f33",
+                    "surface": "#0b1326",
+                    "primary-fixed": "#6ffbbe",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "on-secondary-fixed": "#00201d",
+                    "on-primary-fixed-variant": "#005236",
+                    "secondary-fixed": "#89f5e7",
+                    "primary-fixed-dim": "#4edea3",
+                    "primary": "#4edea3",
+                    "outline": "#86948a",
+                    "on-secondary-fixed-variant": "#005049",
+                    "tertiary-container": "#95a4bb",
+                    "on-primary-fixed": "#002113",
+                    "inverse-primary": "#006c49",
+                    "secondary-container": "#29a195",
+                    "secondary": "#6bd8cb",
+                    "surface-dim": "#0b1326",
+                    "on-secondary": "#003732",
+                    "on-tertiary": "#233144",
+                    "tertiary": "#b9c7df",
+                    "on-error": "#690005",
+                    "surface-variant": "#2d3449",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "inverse-surface": "#dae2fd",
+                    "inverse-on-surface": "#283044",
+                    "on-background": "#dae2fd",
+                    "background": "#0b1326",
+                    "on-secondary-container": "#00302b",
+                    "on-primary": "#003824",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "outline-variant": "#3c4a42",
+                    "on-primary-container": "#00422b",
+                    "primary-container": "#10b981",
+                    "on-surface-variant": "#bbcabf",
+                    "surface-tint": "#4edea3",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#060e20",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#131b2e",
+                    "surface-container-highest": "#2d3449",
+                    "surface-bright": "#31394d",
+                    "on-surface": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-obsidian-gradient {
+            background: linear-gradient(135deg, #4edea3 0%, #10b981 100%);
+        }
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.6);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col bg-[#060e20] w-64 border-r border-[#3c4a42]/15">
+<div class="p-6">
+<span class="font-['Plus_Jakarta_Sans'] font-bold text-[#4edea3] text-lg tracking-tighter">OBSIDIAN LEDGER</span>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-[#222a3d] hover:backdrop-blur-xl rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-['Inter'] font-medium text-sm">Terminal</span>
+</a>
+<a class="bg-gradient-to-br from-[#4edea3] to-[#10b981] text-[#0b1326] font-bold rounded-lg m-2 p-4 flex items-center gap-3 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-['Inter'] font-medium text-sm">Brokerage</span>
+</a>
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-[#222a3d] hover:backdrop-blur-xl rounded-lg" href="#">
+<span class="material-symbols-outlined">variable_insert</span>
+<span class="font-['Inter'] font-medium text-sm">Strategy</span>
+</a>
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-[#222a3d] hover:backdrop-blur-xl rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-['Inter'] font-medium text-sm">Security</span>
+</a>
+</nav>
+<div class="p-4 border-t border-[#3c4a42]/15">
+<div class="flex items-center gap-3 p-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold font-headline uppercase tracking-wider">Master Key</span>
+<span class="text-[10px] text-primary/60 font-mono">0x4F...E1A</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="bg-[#0b1326] flex justify-between items-center px-6 h-16 w-full fixed top-0 z-30 md:left-64 md:w-[calc(100%-16rem)] shadow-[0_8px_32px_rgba(218,226,253,0.04)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#4edea3]">terminal</span>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-xl font-black tracking-tighter text-[#4edea3] uppercase">FLOORPRICER</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-surface-container-lowest rounded-full border border-outline-variant/15">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-mono text-primary uppercase tracking-widest">Network Live</span>
+</div>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-primary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqhz2TD2gB0rVDezBxE-75qy0B1AD-AOKpRBjB0sPr5BoYtPKyTRcc7aJSJpPxsSvQ6xDGhJWHckM7L0_UgMe9gMW6nnfbfO6WeWcRG9Nbws_g4nyTiRfW2P466m1dbKVIebjj7lUBBcasOezl2p9LmKQlFT7gIoe9OWV-f8mnOgrj_BB68AzXtXLL0LUeSwZJX_u9sjanqzAS3mOSvWRFm0vaNyoGkqzIEn55ekHfuEPCDiCommPAdwFXBLNQYIWMxIkVYOKaZMY"/>
+</div>
+</header>
+<!-- Main Content Stage -->
+<main class="pt-24 pb-24 px-6 md:ml-64 min-h-screen bg-surface">
+<div class="max-w-6xl mx-auto space-y-12">
+<!-- Hero Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<span class="font-label text-primary text-xs uppercase tracking-[0.2em]">Institutional Access</span>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight text-on-surface">Brokerage Management</h2>
+<p class="text-on-surface-variant max-w-lg">Centralize your liquidity. Monitor connectivity and execution speed across connected clearing houses in real-time.</p>
+</div>
+<button class="bg-obsidian-gradient text-on-primary font-headline font-bold px-8 py-4 rounded-xl shadow-[0_0_20px_rgba(78,222,163,0.2)] hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2 group">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
+                    Connect New Broker
+                </button>
+</div>
+<!-- Bento Grid of Connected Accounts -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- TD Ameritrade Card (Large Feature) -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 right-0 p-8">
+<div class="flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest">Connected</span>
+</div>
+</div>
+<div class="flex flex-col h-full justify-between gap-12">
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-[#0b1326] flex items-center justify-center border border-outline-variant/20">
+<img class="w-10 h-10 grayscale brightness-200" data-alt="TD Ameritrade company logo minimalist brand icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjzwLFmNZOzLutrmEBSWjr3RaIsjxoKbMM0ap0z2n-BeTA6V1hZF29cH7iymIko_JgBbq4cfnyJ2eW2mmV5R1EMbTRfosICNCsMaDlZ9MdEKYObKaH3nK2xW4GMEfrAK-u4HV_Yvv6C-o5jGsUMnb2RorN_fq6gV8SjdAxq737aBXbtl6c8Qdd268WyzVHVLFFmHPNzILBZ_zxFYBv7AXJYP4sj1lIBtqWzbcto_jp0YAuE4t1Cgz1jMou6JDEzVA-rjZ9Nyj-vNo"/>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold">TD Ameritrade</h3>
+<p class="font-mono text-xs text-on-surface-variant">Account: ****9021-MAIN</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 pt-6">
+<div>
+<p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Latency</p>
+<p class="font-mono text-xl text-primary">12ms</p>
+</div>
+<div>
+<p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">AUM Managed</p>
+<p class="font-mono text-xl">$1.24M</p>
+</div>
+<div>
+<p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Status</p>
+<p class="font-mono text-xl">Active</p>
+</div>
+</div>
+</div>
+<div class="h-24 w-full mt-4 flex items-end gap-1">
+<!-- Visualizing fake activity data -->
+<div class="flex-1 bg-primary/20 h-8 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/30 h-12 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/10 h-6 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-16 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/60 h-20 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/30 h-14 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/50 h-24 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-18 rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<!-- Interactive Brokers (Vertical Feature) -->
+<div class="md:col-span-4 glass-panel rounded-xl p-8 border border-primary/20 flex flex-col justify-between hover:shadow-[0_0_40px_rgba(78,222,163,0.05)] transition-all">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center border border-outline-variant/20">
+<img class="w-8 h-8 opacity-80" data-alt="Interactive Brokers company logo professional finance icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY5EcH9SH2pYWrCglMDokQW1_o6Og-hhRkmEOU3FJLdsWYr3hio6UYL_S-oC5yJ4MZdXuVQlDv_dhwCGg6bO2D5qRvPNokFbzuis6sQRkmMg9juke50a4F3JCMo0NFO4g3uR5KgF7MGZR0k9jjkgAWd43hL4EWz4awPvIh78_2QpjgBgW08nk6gPZ6h3qQc4fYu2xURhIif29IWtdLIqEy1qXPqXGShxYt67NoDYYeX2nPdUvudmdkJNzyJWuo5xzbpBsGIIp_894"/>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-1 bg-surface-bright rounded text-tertiary">
+<span class="material-symbols-outlined text-xs animate-spin">sync</span>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest">Syncing</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline text-xl font-bold">Interactive Brokers</h3>
+<p class="font-mono text-[10px] text-on-surface-variant mt-1 uppercase tracking-tighter">Initializing WebSocket Stream...</p>
+</div>
+<div class="space-y-3">
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3 shadow-[0_0_8px_#4edea3]"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant text-right italic">Estimated completion: 14s</p>
+</div>
+</div>
+<button class="w-full py-3 border border-outline-variant/30 rounded-lg font-label text-[10px] uppercase tracking-widest hover:bg-surface-container-high transition-colors">
+                        View Detailed Logs
+                    </button>
+</div>
+<!-- Security Badges Section -->
+<div class="md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+<div class="flex items-center gap-4 p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/5">
+<div class="text-primary/40">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'wght' 200;">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm uppercase tracking-tight">SOC2 Type II</h4>
+<p class="text-xs text-on-surface-variant">Continuous compliance monitoring</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/5">
+<div class="text-primary/40">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'wght' 200;">encrypted</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm uppercase tracking-tight">AES-256 Vault</h4>
+<p class="text-xs text-on-surface-variant">Hardware-level key management</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/5">
+<div class="text-primary/40">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'wght' 200;">lock_open_right</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm uppercase tracking-tight">Zero-Knowledge</h4>
+<p class="text-xs text-on-surface-variant">We never see your API secrets</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table (Asymmetric Layout) -->
+<section class="space-y-6">
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-4">
+<h3 class="font-headline text-lg font-bold">Execution Health</h3>
+<div class="flex gap-4">
+<button class="text-primary font-label text-[10px] uppercase tracking-widest hover:underline">Export Report</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="text-left font-label text-[10px] text-on-surface-variant uppercase tracking-[0.2em]">
+<th class="pb-4 font-normal">Broker</th>
+<th class="pb-4 font-normal">Operation</th>
+<th class="pb-4 font-normal text-right">Payload</th>
+<th class="pb-4 font-normal text-right">Result</th>
+</tr>
+</thead>
+<tbody class="font-mono text-sm">
+<tr class="group hover:bg-surface-container-high/40 transition-colors">
+<td class="py-4 border-t border-outline-variant/5">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<span>TD-MAIN</span>
+</div>
+</td>
+<td class="py-4 border-t border-outline-variant/5 text-on-surface-variant">AUTH_RENEWAL</td>
+<td class="py-4 border-t border-outline-variant/5 text-right">0x...f21d</td>
+<td class="py-4 border-t border-outline-variant/5 text-right text-primary">SUCCESS</td>
+</tr>
+<tr class="group hover:bg-surface-container-high/40 transition-colors">
+<td class="py-4 border-t border-outline-variant/5">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<span>TD-MAIN</span>
+</div>
+</td>
+<td class="py-4 border-t border-outline-variant/5 text-on-surface-variant">TICKER_PULL</td>
+<td class="py-4 border-t border-outline-variant/5 text-right">AAPL, MSFT</td>
+<td class="py-4 border-t border-outline-variant/5 text-right text-primary">SUCCESS</td>
+</tr>
+<tr class="group hover:bg-surface-container-high/40 transition-colors">
+<td class="py-4 border-t border-outline-variant/5">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+<span>IB-SOCKET</span>
+</div>
+</td>
+<td class="py-4 border-t border-outline-variant/5 text-on-surface-variant">HANDSHAKE</td>
+<td class="py-4 border-t border-outline-variant/5 text-right">0x...8821</td>
+<td class="py-4 border-t border-outline-variant/5 text-right text-tertiary">PENDING</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-3 px-4 md:hidden bg-[#0b1326]/60 backdrop-blur-xl border-t border-[#3c4a42]/15 shadow-[0_-4px_20px_rgba(78,222,163,0.05)]">
+<a class="flex flex-col items-center text-[#dae2fd]/50 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">monitoring</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Terminal</span>
+</a>
+<a class="flex flex-col items-center text-[#4edea3] scale-110 transition-all" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Brokerage</span>
+</a>
+<a class="flex flex-col items-center text-[#dae2fd]/50 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">variable_insert</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Strategy</span>
+</a>
+<a class="flex flex-col items-center text-[#dae2fd]/50 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">security</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest mt-1">Security</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings | FLOORPRICER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#222a3d",
+                        "on-tertiary-container": "#2c3a4d",
+                        "tertiary-fixed": "#d5e3fc",
+                        "surface-container": "#171f33",
+                        "surface": "#0b1326",
+                        "primary-fixed": "#6ffbbe",
+                        "tertiary-fixed-dim": "#b9c7df",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-secondary-fixed": "#00201d",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-fixed": "#89f5e7",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary": "#4edea3",
+                        "outline": "#86948a",
+                        "on-secondary-fixed-variant": "#005049",
+                        "tertiary-container": "#95a4bb",
+                        "on-primary-fixed": "#002113",
+                        "inverse-primary": "#006c49",
+                        "secondary-container": "#29a195",
+                        "secondary": "#6bd8cb",
+                        "surface-dim": "#0b1326",
+                        "on-secondary": "#003732",
+                        "on-tertiary": "#233144",
+                        "tertiary": "#b9c7df",
+                        "on-error": "#690005",
+                        "surface-variant": "#2d3449",
+                        "on-tertiary-fixed-variant": "#3a485b",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "on-background": "#dae2fd",
+                        "background": "#0b1326",
+                        "on-secondary-container": "#00302b",
+                        "on-primary": "#003824",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#0d1c2e",
+                        "outline-variant": "#3c4a42",
+                        "on-primary-container": "#00422b",
+                        "primary-container": "#10b981",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-tint": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#060e20",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#131b2e",
+                        "surface-container-highest": "#2d3449",
+                        "surface-bright": "#31394d",
+                        "on-surface": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(34, 42, 61, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(78, 222, 163, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="fixed left-0 top-0 h-full z-40 bg-[#060e20] w-64 border-r border-[#3c4a42]/15 hidden md:flex flex-col">
+<div class="p-6">
+<span class="font-headline font-bold text-[#4edea3]">OBSIDIAN LEDGER</span>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 hover:bg-[#222a3d] hover:backdrop-blur-xl transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-body font-medium text-sm">Terminal</span>
+</a>
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 hover:bg-[#222a3d] hover:backdrop-blur-xl transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-body font-medium text-sm">Brokerage</span>
+</a>
+<a class="text-[#dae2fd] p-4 flex items-center gap-3 hover:bg-[#222a3d] hover:backdrop-blur-xl transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="variable_insert_group">variable_insert</span>
+<span class="font-body font-medium text-sm">Strategy</span>
+</a>
+<a class="bg-gradient-to-br from-[#4edea3] to-[#10b981] text-[#0b1326] font-bold rounded-lg p-4 flex items-center gap-3 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-body font-medium text-sm">Security</span>
+</a>
+</nav>
+<div class="p-6 mt-auto border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up professional headshot of a person with neutral expression and soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo5q4d3RgF9c1_07b2hsnY4lTYFyhA-MTC1Ifp-TOdOyx3c1jOo5OifDIfpWR__vKbj_s9_4iyJwaRq8PvzL4z8DycYU4EX-tUGEebU92WIH5IwBME78zYOxA551G0ECd9rwuhGf6h-qGXxPOR7XrBwf2DCovbmLXbaHqIv2dyhW5aI1EVW5I7E2C4u5SR9by2QKDcJNpij61Re2zjfTmuyYze1sTmIwOVcN8vnqCYd0mAKD7abMimik1fNVHnxSkTnevFfORx7fI"/>
+</div>
+<div>
+<p class="text-xs font-bold">ALGO_TRADER_01</p>
+<p class="text-[10px] text-primary uppercase tracking-widest font-label">Pro Account</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 right-0 md:left-64 h-16 z-30 bg-[#0b1326] flex justify-between items-center px-6 shadow-[0_8px_32px_rgba(218,226,253,0.04)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#4edea3]" data-icon="terminal">terminal</span>
+<h1 class="font-headline font-bold tracking-tight text-xl text-[#4edea3] uppercase">FLOORPRICER</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#dae2fd] hover:bg-[#222a3d] transition-colors rounded-lg">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-xs font-bold text-[#4edea3] border border-primary/20">
+                JD
+            </div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 pb-20 md:pb-8 px-4 md:px-8 md:ml-64 min-h-screen bg-surface">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter mb-2">SECURITY &amp; ACCESS</h2>
+<p class="text-on-surface-variant font-body max-w-xl">Configure high-frequency trading gateways, manage biometric authentication, and monitor real-time session integrity.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="px-4 py-2 bg-surface-container-low rounded-lg border border-outline-variant/10">
+<p class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">Network Status</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-mono text-sm font-medium">ENCRYPTED_TUNNEL_04</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- API Key Management (Large Column) -->
+<div class="lg:col-span-8 space-y-6">
+<section class="glass-panel rounded-xl p-8 border border-outline-variant/10 emerald-glow">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="vpn_key">vpn_key</span>
+                                    API ACCESS GATEWAYS
+                                </h3>
+<p class="text-sm text-on-surface-variant mt-1">Manage secondary keys for algorithmic sub-processes.</p>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                                GENERATE KEY
+                            </button>
+</div>
+<div class="space-y-4">
+<!-- API Key Item -->
+<div class="group flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg border border-transparent hover:border-primary/20 transition-all">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-surface-container-high rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<div>
+<h4 class="font-bold text-sm uppercase font-label tracking-wide">Main Terminal Production</h4>
+<p class="font-mono text-xs text-on-surface-variant">fp_live_••••••••••••••••3a9d</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Active</span>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- API Key Item -->
+<div class="group flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg border border-transparent hover:border-primary/20 transition-all">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+</div>
+<div>
+<h4 class="font-bold text-sm uppercase font-label tracking-wide">Backtest Sandbox</h4>
+<p class="font-mono text-xs text-on-surface-variant">fp_test_••••••••••••••••7f22</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant text-[10px] font-bold rounded uppercase">ReadOnly</span>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Session Logs -->
+<section class="bg-surface-container-low rounded-xl overflow-hidden border border-outline-variant/5">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline text-lg font-bold">SESSION LOGS</h3>
+<button class="text-[10px] font-label text-primary uppercase tracking-widest hover:underline">Revoke All Sessions</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container text-[10px] font-label text-on-surface-variant uppercase tracking-widest">
+<tr>
+<th class="px-6 py-4 font-normal">Location/Device</th>
+<th class="px-6 py-4 font-normal">IP Address</th>
+<th class="px-6 py-4 font-normal">Activity</th>
+<th class="px-6 py-4 font-normal">Timestamp</th>
+</tr>
+</thead>
+<tbody class="font-body divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="desktop_windows">desktop_windows</span>
+<span class="text-xs font-medium">New York, US (MacOS)</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[10px]">192.168.1.104</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">Current</span>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Just now</td>
+</tr>
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="smartphone">smartphone</span>
+<span class="text-xs font-medium">London, UK (iOS)</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[10px]">82.14.99.121</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant text-[10px] font-bold">Login</span>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">2h 14m ago</td>
+</tr>
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+<span class="text-xs font-medium">AWS-West-1 (Linux)</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[10px]">54.21.10.8</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant text-[10px] font-bold">API Call</span>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">4h 02m ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Two-Factor & Biometrics (Sidebar Column) -->
+<div class="lg:col-span-4 space-y-6">
+<section class="glass-panel rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+                            VERIFICATION
+                        </h3>
+<div class="space-y-6">
+<!-- 2FA Toggle -->
+<div class="flex items-start justify-between">
+<div>
+<h4 class="text-sm font-bold">Authenticator App</h4>
+<p class="text-xs text-on-surface-variant mt-1">Use Google Authenticator or Authy for maximum safety.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</div>
+<hr class="border-outline-variant/10"/>
+<!-- Biometric Toggle -->
+<div class="flex items-start justify-between opacity-60">
+<div>
+<h4 class="text-sm font-bold">Biometric Unlock</h4>
+<p class="text-xs text-on-surface-variant mt-1">Require FaceID or fingerprint for withdrawals.</p>
+</div>
+<div class="relative inline-flex items-center cursor-not-allowed">
+<input class="sr-only peer" disabled="" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5"></div>
+</div>
+</div>
+<div class="p-4 bg-primary/5 rounded-lg border border-primary/10">
+<p class="text-[10px] font-label text-primary uppercase tracking-widest mb-1">Security Score</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-headline font-bold text-primary">84</span>
+<span class="text-xs text-on-surface-variant mb-1">/ 100</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[84%]"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-bold mb-4 uppercase tracking-tighter">Emergency Access</h3>
+<p class="text-xs text-on-surface-variant mb-6">In case of account compromise, trigger an immediate freeze on all outbound trading execution.</p>
+<button class="w-full py-3 bg-transparent border border-error text-error rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-error hover:text-on-error transition-all active:scale-[0.98]">
+                            Freeze Infrastructure
+                        </button>
+</section>
+<!-- Profile Snapshot -->
+<div class="relative rounded-xl overflow-hidden h-40 group cursor-pointer">
+<img alt="Security Mesh" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="abstract digital security concept with glowing blue and green hexagonal grid patterns on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd-InzX3BnZyEIJRN-8gOXBU4Vrz_zdN11YJsmOp3Izq6lmAmcdot81d6nEr3d4k50NB1u9YW6bGgIQJCU48093oidnGPqOo3KpXzi9p8NQdXAigm_Ddiz48SdVNJizRvdxOPau16tQfxY-8oocz7-DuP7kLz5mcEToEUXwfW8x2tYFUH0k0dE7MT9wbc9wKEwT70n7Q0Gu5fVqaVxsP3cHJAm96TgpdvrjD14SLZ3In-FV5C_ytIcLT7Wf5eijd6h9U70mLu040M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h4 class="font-headline font-bold">Node Hardware ID</h4>
+<p class="font-mono text-[10px] text-primary">HWID: FF-29-3A-99-B0-2E</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#0b1326]/60 backdrop-blur-xl flex justify-around items-center py-3 px-4 md:hidden border-t border-[#3c4a42]/15 shadow-[0_-4px_20px_rgba(78,222,163,0.05)]">
+<a class="flex flex-col items-center text-[#dae2fd]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Terminal</span>
+</a>
+<a class="flex flex-col items-center text-[#dae2fd]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Brokerage</span>
+</a>
+<a class="flex flex-col items-center text-[#dae2fd]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="variable_insert_group">variable_insert</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Strategy</span>
+</a>
+<a class="flex flex-col items-center text-[#4edea3] scale-110 animate-pulse-slow" href="#">
+<span class="material-symbols-outlined" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Security</span>
+</a>
+</nav>
+</body></html>
