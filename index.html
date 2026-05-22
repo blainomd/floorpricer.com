@@ -428,6 +428,136 @@
             color: rgba(255,255,255,0.5);
         }
 
+        /* ===== SET-YOUR-FLOOR INTERACTIVE DEMO ===== */
+        .floorlab { background: #0b1220; }
+        .floorlab .section-label { color: var(--green-bright); }
+        .floorlab .section-title { color: #fff; }
+        .floorlab .section-subtitle { color: var(--gray-400); }
+        .fl-card {
+            margin-top: 48px;
+            background: rgba(2, 6, 23, 0.6);
+            border: 1px solid rgba(16,185,129,0.18);
+            border-radius: 20px;
+            padding: 28px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 28px;
+            align-items: stretch;
+        }
+        @media (max-width: 880px) {
+            .fl-card { grid-template-columns: 1fr; }
+        }
+        .fl-chart-wrap { position: relative; }
+        .fl-chart {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: rgba(15,23,42,0.5);
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .fl-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--gray-400);
+        }
+        .fl-legend span { display: inline-flex; align-items: center; gap: 7px; }
+        .fl-swatch { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+        .fl-swatch.price { background: #38bdf8; }
+        .fl-swatch.floor { background: #10b981; }
+        .fl-swatch.exit  { background: #f59e0b; height: 10px; width: 10px; border-radius: 50%; }
+
+        .fl-controls { display: flex; flex-direction: column; gap: 20px; }
+        .fl-control-block {
+            background: rgba(15,23,42,0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 18px 18px 20px;
+        }
+        .fl-control-head {
+            display: flex; align-items: baseline; justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .fl-control-label {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--gray-400);
+        }
+        .fl-floor-pct {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600; font-size: 1.6rem; color: var(--green-bright);
+            line-height: 1;
+        }
+        .fl-slider {
+            -webkit-appearance: none; appearance: none;
+            width: 100%; height: 6px; border-radius: 999px;
+            background: linear-gradient(90deg, #10b981 0%, #10b981 var(--fill,40%), rgba(255,255,255,0.12) var(--fill,40%));
+            outline: none; cursor: pointer;
+        }
+        .fl-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 22px; height: 22px; border-radius: 50%;
+            background: #fff; border: 3px solid #10b981; cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .fl-slider::-moz-range-thumb {
+            width: 22px; height: 22px; border-radius: 50%;
+            background: #fff; border: 3px solid #10b981; cursor: pointer;
+        }
+        .fl-slider-scale {
+            display: flex; justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.66rem; color: var(--gray-500); margin-top: 8px;
+        }
+        .fl-readout { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .fl-stat {
+            background: rgba(15,23,42,0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 14px;
+        }
+        .fl-stat-label {
+            font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em;
+            text-transform: uppercase; color: var(--gray-500); margin-bottom: 6px;
+        }
+        .fl-stat-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600; font-size: 1.25rem; line-height: 1.1;
+        }
+        .fl-stat-val.good { color: var(--green-bright); }
+        .fl-stat-val.bad  { color: #f87171; }
+        .fl-stat-val.neutral { color: #fff; }
+        .fl-stat-sub { font-size: 0.68rem; color: var(--gray-500); margin-top: 4px; }
+        .fl-verdict {
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.22);
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: #a7f3d0;
+        }
+        .fl-verdict b { color: #fff; font-weight: 700; }
+        .fl-actions { display: flex; gap: 10px; }
+        .fl-btn {
+            flex: 1;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px 16px; border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem;
+            cursor: pointer; border: 1px solid rgba(255,255,255,0.12);
+            background: transparent; color: #fff;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .fl-btn:hover { border-color: var(--green-bright); }
+        .fl-btn.solid { background: var(--green-bright); border-color: var(--green-bright); color: var(--gray-900); }
+        .fl-btn.solid:hover { background: #34d399; }
+        .fl-note {
+            font-size: 0.72rem; color: var(--gray-500); font-style: italic;
+            margin-top: 14px; line-height: 1.5;
+        }
+
         /* ===== SECTIONS ===== */
         section { padding: 100px 0; }
 
@@ -1059,6 +1189,68 @@
     </div>
 </section>
 
+<!-- SET YOUR FLOOR — INTERACTIVE DEMO -->
+<section class="floorlab" id="floor-lab">
+    <div class="container">
+        <div class="section-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
+            Set Your Floor
+        </div>
+        <h2 class="section-title">Drag the floor. Watch it protect the gains.</h2>
+        <p class="section-subtitle">Same price path, same crash at the end. The only variable is how tight you set your trailing stop. Move the slider and replay to see where the floor would have taken you out — and what the gain would have been if you'd just held.</p>
+
+        <div class="fl-card reveal">
+            <div class="fl-chart-wrap">
+                <svg class="fl-chart" id="fl-chart" viewBox="0 0 640 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Price path with a trailing floor that ratchets up and triggers an exit">
+                    <!-- grid + paths injected by script -->
+                </svg>
+                <div class="fl-legend">
+                    <span><i class="fl-swatch price"></i> Price</span>
+                    <span><i class="fl-swatch floor"></i> Your floor (only moves up)</span>
+                    <span><i class="fl-swatch exit"></i> Floor breached — auto-exit</span>
+                </div>
+            </div>
+
+            <div class="fl-controls">
+                <div class="fl-control-block">
+                    <div class="fl-control-head">
+                        <span class="fl-control-label">Trailing stop</span>
+                        <span class="fl-floor-pct" id="fl-pct">10%</span>
+                    </div>
+                    <input type="range" class="fl-slider" id="fl-slider" min="3" max="25" value="10" step="1" aria-label="Trailing stop percentage" />
+                    <div class="fl-slider-scale"><span>3% (tight)</span><span>25% (loose)</span></div>
+                </div>
+
+                <div class="fl-readout">
+                    <div class="fl-stat">
+                        <div class="fl-stat-label">Exit price</div>
+                        <div class="fl-stat-val neutral" id="fl-exit">$—</div>
+                        <div class="fl-stat-sub" id="fl-exit-sub">floor breached</div>
+                    </div>
+                    <div class="fl-stat">
+                        <div class="fl-stat-label">Locked-in result</div>
+                        <div class="fl-stat-val good" id="fl-result">—</div>
+                        <div class="fl-stat-sub">vs. $100 entry</div>
+                    </div>
+                </div>
+
+                <div class="fl-verdict" id="fl-verdict">
+                    Set a floor and press replay.
+                </div>
+
+                <div class="fl-actions">
+                    <button class="fl-btn solid" type="button" id="fl-replay">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Replay
+                    </button>
+                </div>
+
+                <p class="fl-note">Illustrative simulation on a fixed price path — not real market data, not a projection of returns. A trailing stop cannot prevent losses on overnight gaps or in fast-falling markets.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- HOW IT WORKS (Terminal Demo) -->
 <section class="terminal-section" id="how-it-works">
     <div class="container">
@@ -1389,6 +1581,168 @@
 
     tick();
     setInterval(tick, 30000);
+})();
+</script>
+
+<script>
+// ===== SET YOUR FLOOR — interactive trailing-stop simulation =====
+// Fixed, hand-tuned price path (entry $100): climbs to a peak, then crashes.
+// The floor ratchets up to (peak-so-far * (1 - pct)) and triggers an exit
+// the first bar the price closes below it. Pure illustration — no live data.
+(function () {
+    var svg = document.getElementById('fl-chart');
+    var slider = document.getElementById('fl-slider');
+    if (!svg || !slider) return;
+
+    var SVGNS = 'http://www.w3.org/2000/svg';
+    var W = 640, H = 320, PADL = 8, PADR = 8, PADT = 18, PADB = 18;
+
+    // Price path, entry = 100. Rises to ~158, chops, then sells off hard.
+    var PRICE = [100,103,101,107,112,110,116,121,118,125,131,128,135,142,139,147,153,150,158,154,
+                 149,141,146,138,130,133,124,117,121,112,104,108,99,93,96,88,90,84,86,80];
+    var ENTRY = 100;
+    var N = PRICE.length;
+    var pMin = 72, pMax = 164; // y-scale bounds
+
+    function x(i) { return PADL + (i / (N - 1)) * (W - PADL - PADR); }
+    function y(p) { return PADT + (1 - (p - pMin) / (pMax - pMin)) * (H - PADT - PADB); }
+
+    // Compute the trailing floor series + exit index for a given pct.
+    function simulate(pct) {
+        var f = pct / 100;
+        var peak = PRICE[0];
+        var floor = peak * (1 - f);
+        var floors = [floor];
+        var exitIdx = -1;
+        for (var i = 1; i < N; i++) {
+            if (PRICE[i] > peak) peak = PRICE[i];
+            floor = Math.max(floor, peak * (1 - f)); // only moves up
+            floors.push(floor);
+            if (exitIdx === -1 && PRICE[i] < floor) exitIdx = i;
+        }
+        return { floors: floors, exitIdx: exitIdx };
+    }
+
+    function pathD(pts) {
+        return pts.map(function (pt, i) { return (i ? 'L' : 'M') + pt[0].toFixed(1) + ' ' + pt[1].toFixed(1); }).join(' ');
+    }
+
+    var anim = null;
+    function render(pct, animate) {
+        var sim = simulate(pct);
+        var endIdx = sim.exitIdx === -1 ? N - 1 : sim.exitIdx;
+
+        // Build SVG content
+        var grid = '';
+        for (var g = 0; g < 5; g++) {
+            var gy = PADT + g * (H - PADT - PADB) / 4;
+            grid += '<line x1="' + PADL + '" y1="' + gy.toFixed(1) + '" x2="' + (W - PADR) + '" y2="' + gy.toFixed(1) + '" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>';
+        }
+        // entry baseline
+        grid += '<line x1="' + PADL + '" y1="' + y(ENTRY).toFixed(1) + '" x2="' + (W - PADR) + '" y2="' + y(ENTRY).toFixed(1) + '" stroke="rgba(148,163,184,0.35)" stroke-width="1" stroke-dasharray="4 4"/>';
+        grid += '<text x="' + (W - PADR) + '" y="' + (y(ENTRY) - 6).toFixed(1) + '" text-anchor="end" fill="#94a3b8" font-size="11" font-family="JetBrains Mono, monospace">entry $100</text>';
+
+        // floor path (full, behind)
+        var floorPts = sim.floors.map(function (fl, i) { return [x(i), y(fl)]; });
+        var floorPath = '<path d="' + pathD(floorPts) + '" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" opacity="0.85"/>';
+
+        // price path up to exit (full price drawn faint, "what holding looked like")
+        var pricePtsAll = PRICE.map(function (p, i) { return [x(i), y(p)]; });
+        var priceFaint = '<path d="' + pathD(pricePtsAll) + '" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.18"/>';
+
+        // protected price path (entry → exit), this is the animated one
+        var pricePts = pricePtsAll.slice(0, endIdx + 1);
+        var pricePath = '<path id="fl-price-path" d="' + pathD(pricePts) + '" fill="none" stroke="#38bdf8" stroke-width="2.75" stroke-linejoin="round" stroke-linecap="round"/>';
+
+        // exit marker
+        var marker = '';
+        if (sim.exitIdx !== -1) {
+            var ex = x(sim.exitIdx), ey = y(sim.floors[sim.exitIdx]);
+            marker = '<circle cx="' + ex.toFixed(1) + '" cy="' + ey.toFixed(1) + '" r="6" fill="#f59e0b" stroke="#0b1220" stroke-width="2"/>' +
+                     '<line x1="' + ex.toFixed(1) + '" y1="' + PADT + '" x2="' + ex.toFixed(1) + '" y2="' + (H - PADB) + '" stroke="#f59e0b" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>';
+        }
+
+        svg.innerHTML = grid + priceFaint + floorPath + pricePath + marker;
+
+        // animate the protected price line drawing left→right
+        var pathEl = document.getElementById('fl-price-path');
+        if (pathEl) {
+            var len = pathEl.getTotalLength();
+            if (animate) {
+                pathEl.style.transition = 'none';
+                pathEl.style.strokeDasharray = len;
+                pathEl.style.strokeDashoffset = len;
+                // force reflow then animate
+                void pathEl.getBoundingClientRect();
+                pathEl.style.transition = 'stroke-dashoffset 1.1s ease-out';
+                pathEl.style.strokeDashoffset = '0';
+            } else {
+                pathEl.style.strokeDasharray = 'none';
+                pathEl.style.strokeDashoffset = '0';
+            }
+        }
+
+        updateReadout(pct, sim);
+    }
+
+    function fmt(n) { return '$' + n.toFixed(2); }
+
+    function updateReadout(pct, sim) {
+        var pctEl = document.getElementById('fl-pct');
+        var exitEl = document.getElementById('fl-exit');
+        var exitSub = document.getElementById('fl-exit-sub');
+        var resEl = document.getElementById('fl-result');
+        var verdict = document.getElementById('fl-verdict');
+
+        pctEl.textContent = pct + '%';
+        slider.style.setProperty('--fill', ((pct - 3) / (25 - 3) * 100) + '%');
+
+        var holdFinal = PRICE[N - 1];
+        var holdPct = ((holdFinal - ENTRY) / ENTRY) * 100;
+
+        if (sim.exitIdx === -1) {
+            // never stopped out — rode the full path to the end
+            exitEl.textContent = fmt(holdFinal);
+            exitEl.className = 'fl-stat-val ' + (holdFinal >= ENTRY ? 'good' : 'bad');
+            exitSub.textContent = 'never breached — held to end';
+            var endPct = holdPct;
+            resEl.textContent = (endPct >= 0 ? '+' : '') + endPct.toFixed(1) + '%';
+            resEl.className = 'fl-stat-val ' + (endPct >= 0 ? 'good' : 'bad');
+            verdict.innerHTML = 'At <b>' + pct + '%</b>, the floor was loose enough that it never triggered — you rode the full path down to ' + fmt(holdFinal) + ' (<b>' + (endPct >= 0 ? '+' : '') + endPct.toFixed(1) + '%</b>). A looser floor gives the position more room, but less protection when it finally falls.';
+            return;
+        }
+
+        var exitPrice = sim.floors[sim.exitIdx];
+        var exitGain = ((exitPrice - ENTRY) / ENTRY) * 100;
+        exitEl.textContent = fmt(exitPrice);
+        exitEl.className = 'fl-stat-val ' + (exitPrice >= ENTRY ? 'good' : 'bad');
+        exitSub.textContent = 'bar ' + (sim.exitIdx + 1) + ' of ' + N;
+        resEl.textContent = (exitGain >= 0 ? '+' : '') + exitGain.toFixed(1) + '%';
+        resEl.className = 'fl-stat-val ' + (exitGain >= 0 ? 'good' : 'bad');
+
+        var saved = exitGain - holdPct;
+        verdict.innerHTML = 'A <b>' + pct + '%</b> trailing stop locked in your exit at <b>' + fmt(exitPrice) + '</b> (' + (exitGain >= 0 ? '+' : '') + exitGain.toFixed(1) + '%). Holding to the end would have left you at ' + fmt(holdFinal) + ' (' + holdPct.toFixed(1) + '%) — the floor protected <b>' + saved.toFixed(1) + ' points</b> of that drawdown.';
+    }
+
+    slider.addEventListener('input', function () { render(parseInt(slider.value, 10), false); });
+    document.getElementById('fl-replay').addEventListener('click', function () {
+        render(parseInt(slider.value, 10), true);
+    });
+
+    // Initial render — animate once the card scrolls into view.
+    var rendered = false;
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting && !rendered) {
+                rendered = true;
+                render(parseInt(slider.value, 10), true);
+                io.disconnect();
+            }
+        });
+    }, { threshold: 0.25 });
+    io.observe(svg);
+    // also render immediately (non-animated) so it's never blank
+    render(parseInt(slider.value, 10), false);
 })();
 </script>
 
