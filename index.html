@@ -863,6 +863,71 @@
             color: var(--green-accent);
         }
 
+        /* ── SCROLL-REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── HERO STAT CARDS — now links ── */
+        a.hero-stat-link {
+            text-decoration: none; color: inherit; display: block;
+        }
+        a.hero-stat-link .hero-stat {
+            padding: 12px 8px; border-radius: 10px;
+            transition: background 0.18s ease;
+        }
+        a.hero-stat-link:hover .hero-stat {
+            background: rgba(255,255,255,0.06);
+        }
+
+        /* ── STRATEGY CARD LIFT ── */
+        .strategy-card {
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .strategy-card:hover {
+            border-color: var(--green-hero);
+            box-shadow: 0 10px 36px rgba(13,148,136,0.13);
+            transform: translateY(-4px);
+        }
+
+        /* ── COOP CARD LIFT ── */
+        .coop-card {
+            transition: background 0.18s ease, border-color 0.18s ease;
+        }
+        .coop-card:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(255,255,255,0.18);
+        }
+
+        /* ── WAITLIST MINI STATS — links ── */
+        a.mini-stat-link {
+            text-decoration: none; color: inherit; display: block;
+        }
+        a.mini-stat-link > div {
+            transition: background 0.18s ease, border-color 0.18s ease;
+        }
+        a.mini-stat-link:hover > div {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.14);
+        }
+
+        /* ── NAV LINK UNDERLINES ── */
+        .nav-links a:not(.nav-cta) {
+            position: relative;
+        }
+        .nav-links a:not(.nav-cta)::after {
+            content: '';
+            position: absolute;
+            bottom: -3px; left: 0;
+            width: 0; height: 1.5px;
+            background: var(--green-accent);
+            transition: width 0.2s ease;
+        }
+        .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -918,8 +983,8 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             Open Source Trading Harness
         </div>
-        <h1>Your floor only<br><span class="hero-green">moves up.</span></h1>
-        <p>Automated trailing stops that raise your floor as your position climbs and execute a market sell if the floor is breached. You configure the rules. The harness runs them. Your keys, your brokerage, your decisions.</p>
+        <h1>Set your floor once.<br><span class="hero-green">It only moves up.</span></h1>
+        <p>Automated trailing stops that lock in gains as your position climbs — and execute a clean exit if the floor is breached. You write the rules. The harness enforces them. Your keys, your brokerage, your account.</p>
         <div class="hero-ctas">
             <a href="#waitlist" class="btn-primary">
                 Join the Waitlist
@@ -930,19 +995,25 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             </a>
         </div>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-number">$0</div>
-                <div class="hero-stat-label">Paper trading is free</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-number">5min</div>
-                <div class="hero-stat-label">Monitor cycle. Set and forget.</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-number">100%</div>
-                <div class="hero-stat-label">Your keys. Your control.</div>
-            </div>
+        <div class="hero-stats reveal">
+            <a href="#pricing" class="hero-stat-link">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">$0</div>
+                    <div class="hero-stat-label">Paper trading, forever free</div>
+                </div>
+            </a>
+            <a href="#how-it-works" class="hero-stat-link">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5min</div>
+                    <div class="hero-stat-label">Monitor cycle — runs while you live your life</div>
+                </div>
+            </a>
+            <a href="#waitlist" class="hero-stat-link">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">100%</div>
+                    <div class="hero-stat-label">Your keys, your brokerage, your control</div>
+                </div>
+            </a>
         </div>
 
         <!-- LIVE DEMO PORTFOLIO -->
@@ -1040,7 +1111,7 @@
         <h2 class="section-title">Free pipes. Paid brain.</h2>
         <p class="section-subtitle">Paper trading is free. Live trading is coming soon — join the waitlist to be first in line.</p>
 
-        <div class="pricing-grid">
+        <div class="pricing-grid reveal">
             <div class="price-card">
                 <div class="price-name">Paper</div>
                 <div class="price-amount">$0<span>/forever</span></div>
@@ -1117,18 +1188,24 @@
             <p style="color: #475569; font-size: 13px; margin-top: 16px;">No spam. No sales calls. One email when it ships.</p>
 
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px;">
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 16px; text-align: center;">
-                    <div style="font-size: 1.5rem; font-weight: 800; color: #34d399; font-family: 'JetBrains Mono', monospace;">$0</div>
-                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Paper trading, forever free</div>
-                </div>
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 16px; text-align: center;">
-                    <div style="font-size: 1.5rem; font-weight: 800; color: #f59e0b; font-family: 'JetBrains Mono', monospace;">Open</div>
-                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Source harness, your keys</div>
-                </div>
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 16px; text-align: center;">
-                    <div style="font-size: 1.5rem; font-weight: 800; color: #14b8a6; font-family: 'JetBrains Mono', monospace;">Co-op</div>
-                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Owned by members, not VCs</div>
-                </div>
+                <a href="#pricing" class="mini-stat-link">
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 16px; text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 800; color: #34d399; font-family: 'JetBrains Mono', monospace;">$0</div>
+                        <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Paper trading, forever free</div>
+                    </div>
+                </a>
+                <a href="#how-it-works" class="mini-stat-link">
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 16px; text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 800; color: #f59e0b; font-family: 'JetBrains Mono', monospace;">Open</div>
+                        <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Source harness — read every line</div>
+                    </div>
+                </a>
+                <a href="#pricing" class="mini-stat-link">
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 16px; text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 800; color: #14b8a6; font-family: 'JetBrains Mono', monospace;">Co-op</div>
+                        <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Owned by members, not VCs</div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -1316,5 +1393,15 @@
 </script>
 
 <script src="https://harnesshealth.ai/footer.js?v=10" data-brand="floorpricer" data-theme="light" defer></script>
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
