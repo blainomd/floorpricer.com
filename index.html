@@ -1293,6 +1293,100 @@
     </div>
 </section>
 
+<!-- STRATEGIES -->
+<section id="strategies" style="padding: 100px 0; background: #f8fafc;">
+    <div class="container">
+        <div class="section-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
+            Three Strategies
+        </div>
+        <h2 class="section-title">The floor is the foundation. Here's what's built on it.</h2>
+        <p class="section-subtitle">Every strategy in FloorPricer is a rule set — you define the parameters, the harness enforces them. Paper-trade each one until you understand the mechanics, then connect real capital.</p>
+        <p style="font-size:0.82rem;color:#64748b;margin-top:8px;font-style:italic;">All examples below are illustrative of paper-trading mechanics only. Not a projection of real returns. See full risk disclosure below.</p>
+
+        <div class="strategies-grid reveal">
+            <!-- Strategy 1: Trailing Stop -->
+            <div class="strategy-card">
+                <div class="strategy-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                </div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                    <h3 style="margin:0;">Trailing Stop</h3>
+                    <span class="strategy-tag tag-beginner">Beginner</span>
+                </div>
+                <p>Set a floor at X% below the highest price reached. Every time the price climbs to a new high, the floor ratchets up with it — but it never moves down. The moment the price drops through the floor, the harness executes a clean exit automatically.</p>
+                <div style="margin-top:20px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:16px;">
+                    <p style="font-size:0.8rem; color:#14532d; margin:0; font-weight:600; margin-bottom:8px;">How the floor moves — step by step</p>
+                    <ol style="font-size:0.8rem; color:#166534; margin:0; padding-left:18px; line-height:1.7;">
+                        <li>Entry at $100. You set a 10% trailing stop. Floor starts at $90.</li>
+                        <li>Price climbs to $120. Floor automatically ratchets to $108 (10% below the new high). The floor never drops back.</li>
+                        <li>Price pulls back to $107 — below the $108 floor. Harness triggers exit at market. You exit with the gain locked in.</li>
+                        <li>If price kept climbing to $150, the floor would have followed to $135 — still protecting downside.</li>
+                    </ol>
+                    <p style="font-size:0.75rem; color:#166534; margin:8px 0 0; font-style:italic;">Trailing stops cannot protect against overnight gaps or extremely fast markets. Illustrative example only.</p>
+                </div>
+                <a href="#waitlist" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:0.85rem; font-weight:600; color:#0d9488; text-decoration:none;">
+                    Try it in paper trading
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <!-- Strategy 2: Ladder Buy -->
+            <div class="strategy-card">
+                <div class="strategy-icon teal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                </div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                    <h3 style="margin:0;">Ladder Buy</h3>
+                    <span class="strategy-tag tag-intermediate">Intermediate</span>
+                </div>
+                <p>Instead of buying a full position at once, ladder buys automatically scale into a position at pre-defined price levels as the stock falls. Each rung of the ladder buys a fixed dollar amount — so you average down only on the schedule you set, never on emotion.</p>
+                <div style="margin-top:20px; background:#f0fdfa; border:1px solid #99f6e4; border-radius:10px; padding:16px;">
+                    <p style="font-size:0.8rem; color:#134e4a; margin:0; font-weight:600; margin-bottom:8px;">How a 3-rung ladder works — step by step</p>
+                    <ol style="font-size:0.8rem; color:#0f766e; margin:0; padding-left:18px; line-height:1.7;">
+                        <li>You define 3 rungs: buy $500 at $100, $500 at $92, $500 at $85. Total: $1,500 max committed.</li>
+                        <li>Price opens at $100. First rung executes automatically — $500 deployed.</li>
+                        <li>Price drops to $92. Second rung executes — another $500. Your average cost drops.</li>
+                        <li>Price stabilizes above $85 — third rung never triggers. You deploy less than your max.</li>
+                        <li>Each buy automatically gets a trailing stop — the floor follows each rung independently.</li>
+                    </ol>
+                    <p style="font-size:0.75rem; color:#0f766e; margin:8px 0 0; font-style:italic;">Ladder buying does not guarantee a better average cost — price may continue falling past all rungs. Illustrative only.</p>
+                </div>
+                <a href="#waitlist" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:0.85rem; font-weight:600; color:#0d9488; text-decoration:none;">
+                    Available in Live — join waitlist
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <!-- Strategy 3: Wheel -->
+            <div class="strategy-card">
+                <div class="strategy-icon gold">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="14.5" y2="14.5"/></svg>
+                </div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                    <h3 style="margin:0;">Wheel Strategy</h3>
+                    <span class="strategy-tag tag-advanced">Advanced</span>
+                </div>
+                <p>The Wheel is an options income strategy: sell a cash-secured put to collect premium; if assigned, you own the stock — then sell covered calls on the shares you hold to collect more premium. The floor protects you while the wheel turns.</p>
+                <div style="margin-top:20px; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:16px;">
+                    <p style="font-size:0.8rem; color:#78350f; margin:0; font-weight:600; margin-bottom:8px;">The three phases — step by step</p>
+                    <ol style="font-size:0.8rem; color:#92400e; margin:0; padding-left:18px; line-height:1.7;">
+                        <li><strong>Phase 1 — Sell the put:</strong> You sell a 30-day cash-secured put on a stock you'd be willing to own. You collect the premium immediately regardless of outcome.</li>
+                        <li><strong>Phase 2 — Assigned or expired:</strong> If the put expires worthless, keep the premium and repeat. If assigned, you own 100 shares at the strike price — which you were willing to pay.</li>
+                        <li><strong>Phase 3 — Sell the call:</strong> On your shares, sell a covered call at a higher strike. Collect premium. If called away, you sell above your cost basis. Repeat from Phase 1.</li>
+                        <li><strong>FloorPricer's role:</strong> Trailing stop on the underlying position between cycles protects against gap-down scenarios while the wheel turns.</li>
+                    </ol>
+                    <p style="font-size:0.75rem; color:#92400e; margin:8px 0 0; font-style:italic;">Options trading involves significant risk. The Wheel does not guarantee income — assignment risk and gap risk apply. Paper-trade extensively before using real capital.</p>
+                </div>
+                <a href="#waitlist" style="display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:0.85rem; font-weight:600; color:#f59e0b; text-decoration:none;">
+                    Available in Live — join waitlist
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- PRICING -->
 <section id="pricing">
     <div class="container">
